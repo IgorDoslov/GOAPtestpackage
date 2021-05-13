@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
-public class Enemy : Agent
+public class Chicken : Agent
 {
     public float hungerTime;
     [HideInInspector]

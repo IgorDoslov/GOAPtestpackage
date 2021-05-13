@@ -20,7 +20,7 @@ public class GoDrink : Action
     // On exiting the state
     public override bool OnActionExit()
     {
-        GetComponent<Enemy>().thirstTimer = 0;
+        GetComponent<Chicken>().thirstTimer = 0;
         internalState.RemoveState("Thirsty");
         internalState.ModifyInternalState("SatisfyThirst");
         World.Instance.GetQueue("Water").AddResource(target);

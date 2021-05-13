@@ -9,6 +9,7 @@ namespace GOAP
     public class TagSelectorPropertyDrawer : PropertyDrawer
     {
 
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (property.propertyType == SerializedPropertyType.String)
@@ -19,6 +20,8 @@ namespace GOAP
 
                 if (attrib.UseDefaultTagFieldDrawer)
                 {
+                    
+
                     property.stringValue = EditorGUI.TagField(position, label, property.stringValue);
                 }
                 else

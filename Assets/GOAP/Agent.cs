@@ -22,16 +22,20 @@ namespace GOAP
     {
         public string goal;
         public int value;
+        [Tooltip("Should the goal be removed once completed. Leave unticked to repeat the goal forever")]
         public bool shouldRemove;
+        [Tooltip("The higher the number the higher the priority")]
         public int priority;
     }
 
     public class Agent : MonoBehaviour
     {
+        [HideInInspector]
         public List<Action> actions = new List<Action>();
         public Dictionary<SubGoal, int> goalsDic = new Dictionary<SubGoal, int>();
         public Inventory inventory = new Inventory();
         public StateCollection agentInternalState = new StateCollection();
+        [Tooltip("How far from the target does the agent need to be to complete the goal")]
         public float distanceToTargetThreshold = 2f;
         public Goal[] myGoals;
         Planner planner;

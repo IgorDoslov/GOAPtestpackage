@@ -7,15 +7,24 @@ namespace GOAP
 {
     public abstract class Action : MonoBehaviour
     {
+        [Tooltip("The name of the action")]
         public string actionName = "Action";
+        [Tooltip("The cost of the action")]
         public float cost = 1.0f;
+        [Tooltip("A Game Object can be used as a target")]
         public GameObject target;
+        [HideInInspector]
         public Vector3 destination = Vector3.zero;
+        //[Tooltip("Pick the tag of the object to be used as a target"),TagSelector]
         [TagSelector]
         public string targetTag;
+        [Tooltip("The duration of the action")]
         public float duration = 0;
+        [Tooltip("The preconditions required for the action to occur")]
         public State[] preConditions;
+        [Tooltip("The effects after the action has occured")]
         public State[] afterEffects;
+        [HideInInspector]
         public NavMeshAgent navAgent;
 
         public Dictionary<string, int> preconditionsDic;
@@ -25,6 +34,7 @@ namespace GOAP
 
         public StateCollection internalState;
 
+        [HideInInspector]
         public bool running = false;
 
         public Action()

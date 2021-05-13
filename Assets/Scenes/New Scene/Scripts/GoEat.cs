@@ -20,7 +20,7 @@ public class GoEat : Action
     // On exiting the state
     public override bool OnActionExit()
     {
-        GetComponent<Enemy>().hungerTimer = 0;
+        GetComponent<Chicken>().hungerTimer = 0;
         internalState.RemoveState("Hungry");
         internalState.ModifyInternalState("SatisfyHunger");
         World.Instance.GetQueue("Food").AddResource(target);
