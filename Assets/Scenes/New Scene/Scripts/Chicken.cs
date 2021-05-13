@@ -13,7 +13,8 @@ public class Chicken : Agent
     [HideInInspector]
     public float thirstTimer;
 
-    public GameObject player;
+    public GameObject wolf;
+    public float distanceToWolf = 20f;
 
     new void Start()
     {
@@ -29,14 +30,15 @@ public class Chicken : Agent
 
 
 
-        float dist = Vector3.Distance(transform.position, player.transform.position);
+        float dist = Vector3.Distance(transform.position, wolf.transform.position);
         Debug.Log(dist);
-        if (dist <= 20f)
+        if (dist <= distanceToWolf)
         {
             if (!agentInternalState.HasState("Run"))
             {
                 agentInternalState.ModifyInternalState("Run");
                 StopAction();
+                // put it back into the world
                 if (inventory.FindItemWithTag("Food"))
                 {
                     World.Instance.GetQueue("Food").AddResource(inventory.FindItemWithTag("Food"));

@@ -5,16 +5,23 @@ using GOAP;
 
 public class #SCRIPTNAME# : Agent
 {
-new void Start()
+    new void Start()
     {
         base.Start();
 
-       //example:
-       // Invoke("FunctionName", Random.Range(10, 20));
+        //example:
+        // Invoke("FunctionName", Random.Range(10, 20));
     }
 
     //void FunctionName()
     //{
     //    agentInternalState.ModifyState("condition", 0);
     //}
+
+    //private void Update()
+    //{
+
+    //}
+
+    
 }

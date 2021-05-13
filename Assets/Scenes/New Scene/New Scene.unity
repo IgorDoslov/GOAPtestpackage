@@ -137,7 +137,11 @@ PrefabInstance:
     - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2047549983}
+      objectReference: {fileID: 512335898}
+    - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+      propertyPath: wolf
+      value: 
+      objectReference: {fileID: 512335898}
     - target: {fileID: 3563243684947485484, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.62
@@ -183,9 +187,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3563243685181819605, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: player
+      propertyPath: wolf
       value: 
-      objectReference: {fileID: 2047549983}
+      objectReference: {fileID: 512335898}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
 --- !u!1 &92170875
@@ -584,11 +588,13 @@ GameObject:
   - component: {fileID: 512335901}
   - component: {fileID: 512335900}
   - component: {fileID: 512335899}
+  - component: {fileID: 512335906}
   - component: {fileID: 512335903}
   - component: {fileID: 512335904}
+  - component: {fileID: 512335905}
   m_Layer: 0
   m_Name: Wolf
-  m_TagString: Untagged
+  m_TagString: Wolf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -663,7 +669,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512335898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 10.48, y: 0.5, z: -22.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -684,11 +690,18 @@ MonoBehaviour:
   actions: []
   distanceToTargetThreshold: 2
   myGoals:
+  - goal: ChickenFound
+    value: 0
+    shouldRemove: 0
+    priority: 1
   - goal: CatchChicken
     value: 0
     shouldRemove: 0
     priority: 1
   currentAction: {fileID: 0}
+  hungerTime: 30
+  hungerTimer: 0
+  distanceToChicken: 30
 --- !u!114 &512335904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,12 +718,68 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  targetTag: 
+  targetTag: Chicken
   duration: 0
-  preConditions: []
-  afterEffects: []
+  preConditions:
+  - key: Hungry
+    value: 0
+  - key: ChickenFound
+    value: 0
+  afterEffects:
+  - key: CatchChicken
+    value: 0
   navAgent: {fileID: 0}
   running: 0
+--- !u!114 &512335905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512335898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef96aa07222fda44095c7026479fac02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 1
+  target: {fileID: 0}
+  destination: {x: 0, y: 0, z: 0}
+  targetTag: Chicken
+  duration: 0
+  preConditions:
+  - key: Hungry
+    value: 0
+  - key: ChickenNotFound
+    value: 0
+  afterEffects:
+  - key: ChickenFound
+    value: 0
+  navAgent: {fileID: 0}
+  running: 0
+--- !u!195 &512335906
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512335898}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 4
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &514320341
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +981,11 @@ PrefabInstance:
     - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2047549983}
+      objectReference: {fileID: 512335898}
+    - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+      propertyPath: wolf
+      value: 
+      objectReference: {fileID: 512335898}
     - target: {fileID: 3563243684947485484, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.88
@@ -961,6 +1034,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2047549983}
+    - target: {fileID: 3563243685181819605, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+      propertyPath: wolf
+      value: 
+      objectReference: {fileID: 512335898}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
 --- !u!1 &1131954365
@@ -1555,6 +1632,8 @@ MonoBehaviour:
     objectQueue: Food
   - tag: Water
     objectQueue: Water
+  - tag: Chicken
+    objectQueue: Chicken
 --- !u!4 &2132626275
 Transform:
   m_ObjectHideFlags: 0
@@ -1583,7 +1662,11 @@ PrefabInstance:
     - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2047549983}
+      objectReference: {fileID: 512335898}
+    - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+      propertyPath: wolf
+      value: 
+      objectReference: {fileID: 512335898}
     - target: {fileID: 3563243684947485484, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.82
@@ -1629,8 +1712,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3563243685181819605, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: player
+      propertyPath: wolf
       value: 
-      objectReference: {fileID: 2047549983}
+      objectReference: {fileID: 512335898}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
