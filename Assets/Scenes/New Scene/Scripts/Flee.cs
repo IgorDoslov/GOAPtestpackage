@@ -16,9 +16,9 @@ public class Flee : Action
 
     }
 
-    public override bool OnActionUpdate()
+    public override void OnActionUpdate()
     {
-        return true;
+
     }
 
     public override bool ActionExitCondition()

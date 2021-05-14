@@ -15,21 +15,20 @@ namespace GOAP
         public GameObject target;
         [HideInInspector]
         public Vector3 destination = Vector3.zero;
-        [Tooltip("The duration of the action")]
-        public float duration = 0;
         [Tooltip("The preconditions required for the action to occur")]
         public State[] preConditions;
         [Tooltip("The effects after the action has occured")]
         public State[] afterEffects;
         [HideInInspector]
         public NavMeshAgent navAgent;
+        public float duration = 0f;
 
         public Dictionary<string, int> preconditionsDic;
         public Dictionary<string, int> effectsDic;
 
         public Inventory inventory;
 
-        public StateCollection internalState;
+        public StateCollection agentInternalState;
 
         [HideInInspector]
         public bool running = false;
@@ -57,7 +56,7 @@ namespace GOAP
                 }
 
             inventory = GetComponent<Agent>().inventory;
-            internalState = GetComponent<Agent>().agentInternalState;
+            agentInternalState = GetComponent<Agent>().agentInternalState;
         }
 
         public bool IsAchievable()
@@ -81,11 +80,9 @@ namespace GOAP
 
         public abstract bool OnActionExit();
 
-        public abstract bool OnActionUpdate();
+        public abstract void OnActionUpdate();
 
         public abstract bool ActionExitCondition();
-
-
 
 
     }

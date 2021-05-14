@@ -576,17 +576,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2047549983}
   offset: {x: 0, y: 30, z: -10}
---- !u!114 &418352884 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 873433553}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ccd69ac5559d1499dc42c83d295a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &512335898
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,15 +701,10 @@ MonoBehaviour:
     shouldRemove: 0
     priority: 2
   currentAction: {fileID: 0}
+  durationFinished: 0
+  actionPlan: []
   hungerTime: 10
   hungerTimer: 0
-  chickens:
-  - {fileID: 1210832021}
-  - {fileID: 418352884}
-  - {fileID: 634966941}
-  distanceToChicken: 30
-  closestChickenDistance: Infinity
-  closestChickenObj: {fileID: 0}
 --- !u!114 &512335904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,8 +721,6 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  targetTag: Chicken
-  duration: 0
   preConditions:
   - key: Hungry
     value: 0
@@ -748,6 +730,7 @@ MonoBehaviour:
   - key: CatchChicken
     value: 0
   navAgent: {fileID: 0}
+  duration: 0
   running: 0
 --- !u!114 &512335905
 MonoBehaviour:
@@ -765,7 +748,7 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  targetTag: 
+  IsActionRunning: 0
   duration: 0
   preConditions:
   - key: Hungry
@@ -777,6 +760,7 @@ MonoBehaviour:
     value: 0
   navAgent: {fileID: 0}
   running: 0
+  wanderTarget: {x: 0, y: 0, z: 0}
 --- !u!195 &512335906
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -923,17 +907,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &634966941 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 6980701}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ccd69ac5559d1499dc42c83d295a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &769477262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,17 +1138,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1210832015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 3563243684288610603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1210832021 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
   m_PrefabInstance: {fileID: 3563243684288610603}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1210832015}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0ccd69ac5559d1499dc42c83d295a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1210832027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210832015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615301e9b91ecf34aaa9de1b22c5b99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgent: {fileID: 1210832021}
 --- !u!1 &1520391415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1728,10 @@ PrefabInstance:
       propertyPath: wolf
       value: 
       objectReference: {fileID: 512335898}
+    - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+      propertyPath: duration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3563243684947485484, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.82

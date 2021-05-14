@@ -8,8 +8,25 @@ public class GoToHouse : Action
      // called at the begining of this action
     public override bool OnActionEnter()
     {
+        target = GameObject.FindGameObjectWithTag("Home");
+        if (target == null)
+            return false;
+        navAgent.SetDestination(target.transform.position);
         return true;
 
+
+    }
+
+    // Action Update
+    public override void OnActionUpdate()
+    {
+
+    }
+
+    // The condition to exit the action
+    public override bool ActionExitCondition()
+    {
+        return true;
     }
 
     // On exiting the state

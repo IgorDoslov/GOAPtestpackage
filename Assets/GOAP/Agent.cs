@@ -43,6 +43,9 @@ namespace GOAP
         public Action currentAction;
         SubGoal currentGoal;
 
+        protected float durationTimer = 0f;
+        public bool durationFinished = false;
+
         //used to create a list to display our current plan of actions to get to goal.
         [HideInInspector] public List<Action> actionPlan = new List<Action>();
 
@@ -60,12 +63,15 @@ namespace GOAP
             }
         }
 
-        bool invoked = false;
         void CompleteAction()
         {
-            currentAction.running = false;
-            currentAction.OnActionExit();
-            invoked = false;
+            if (currentAction != null)
+            {
+                durationFinished = false;
+                currentAction.running = false;
+                currentAction.OnActionExit();
+            }
+
         }
 
         // Update is called once per frame
@@ -76,12 +82,13 @@ namespace GOAP
 
                 if (currentAction.ActionExitCondition())
                 {
-                    if (!invoked)
-                    {
-                        Invoke("CompleteAction", currentAction.duration);
-                        invoked = true;
-                        return;
-                    }
+                    Duration();
+
+                    if (durationFinished)
+                        CompleteAction();
+
+                    return;
+
                 }
 
                 if (currentAction.running)
@@ -112,14 +119,14 @@ namespace GOAP
             }
 
             // for debugging or use system.linq instead. Remove this maybe
-            actionPlan.Clear();
-            if (actionQueue != null)
-            {
-                foreach (Action a in actionQueue)
-                {
-                    actionPlan.Add(a);
-                }
-            }
+            //actionPlan.Clear();
+            //if (actionQueue != null)
+            //{
+            //    foreach (Action a in actionQueue)
+            //    {
+            //        actionPlan.Add(a);
+            //    }
+            //}
 
 
             if (actionQueue != null && actionQueue.Count == 0)
@@ -136,6 +143,8 @@ namespace GOAP
                 currentAction = actionQueue.Dequeue();
                 if (currentAction.OnActionEnter())
                 {
+                    durationTimer = 0f;
+                    durationFinished = false;
                     currentAction.running = true;
                 }
                 else
@@ -153,6 +162,19 @@ namespace GOAP
                 currentAction.running = false;
                 currentAction = null;
                 actionQueue = null;
+                currentAction.duration = 0f;
+                durationFinished = false;
+            }
+        }
+
+        public void Duration()
+        {
+            durationTimer += Time.deltaTime;
+
+            if (durationTimer > currentAction.duration)
+            {
+                durationTimer = 0f;
+                durationFinished = true;
             }
         }
     }

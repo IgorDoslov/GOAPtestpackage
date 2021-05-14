@@ -12,9 +12,9 @@ public class #SCRIPTNAME# : Action
     }
 
     // Action Update
-    public override bool OnActionUpdate()
+    public override void OnActionUpdate()
     {
-        return true;
+
     }
 
     // The condition to exit the action

@@ -9,11 +9,28 @@ public class GoEat : Action
     public override bool OnActionEnter()
     {
         target = World.Instance.GetQueue("Food").RemoveResource().transform.gameObject;
-        if (!inventory.FindItemWithTag("Food"))
-            inventory.AddItem(target);
         if (target == null)
             return false;
+        navAgent.SetDestination(target.transform.position);
         return true;
+
+    }
+
+
+    // Action Update
+    public override void OnActionUpdate()
+    {
+
+    }
+
+    // The condition to exit the action
+    public override bool ActionExitCondition()
+    {
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+        if (dist < 2.0f)
+            return true;
+        else
+            return false;
 
     }
 
@@ -21,8 +38,8 @@ public class GoEat : Action
     public override bool OnActionExit()
     {
         GetComponent<Chicken>().hungerTimer = 0;
-        internalState.RemoveState("Hungry");
-        internalState.ModifyInternalState("SatisfyHunger");
+        agentInternalState.RemoveState("Hungry");
+        agentInternalState.ModifyInternalState("SatisfyHunger");
         World.Instance.GetQueue("Food").AddResource(target);
         inventory.RemoveItem(target);
 

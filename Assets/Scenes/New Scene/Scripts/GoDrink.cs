@@ -9,35 +9,38 @@ public class GoDrink : Action
     public override bool OnActionEnter()
     {
         target = World.Instance.GetQueue("Water").RemoveResource().transform.gameObject;
-        if (!inventory.FindItemWithTag("Water"))
-            inventory.AddItem(target);
         if (target == null)
             return false;
+        navAgent.SetDestination(target.transform.position);
         return true;
 
     }
 
-    public override bool OnActionUpdate()
+    public override void OnActionUpdate()
     {
-        return true;
+
     }
 
     public override bool ActionExitCondition()
     {
-        return true;
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+        if (dist < 2.0f)
+
+            return true;
+        else
+            return false;
     }
 
     // On exiting the state
     public override bool OnActionExit()
     {
         GetComponent<Chicken>().thirstTimer = 0;
-        internalState.RemoveState("Thirsty");
-        internalState.ModifyInternalState("SatisfyThirst");
+        agentInternalState.RemoveState("Thirsty");
+        agentInternalState.ModifyInternalState("SatisfyThirst");
         World.Instance.GetQueue("Water").AddResource(target);
         inventory.RemoveItem(target);
 
         return true;
     }
-
 
 }

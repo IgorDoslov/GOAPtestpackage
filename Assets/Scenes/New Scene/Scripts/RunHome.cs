@@ -12,6 +12,18 @@ public class RunHome : Action
 
     }
 
+    // Action Update
+    public override void OnActionUpdate()
+    {
+
+    }
+
+    // The condition to exit the action
+    public override bool ActionExitCondition()
+    {
+        return true;
+    }
+
     // On exiting the state
     public override bool OnActionExit()
     {
