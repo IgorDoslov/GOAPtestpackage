@@ -17,7 +17,7 @@ public class Flee : Action
 
     public override void OnActionUpdate()
     {
-        destination = transform.position + ((transform.position - wolf.transform.position) * 0.5f);
+        destination = transform.position + ((transform.position - wolf.transform.position) * 2.5f);
         navAgent.SetDestination(destination);
 
     }

@@ -9,7 +9,7 @@ public class LookForChicken : Action
     public bool keepWandering = true;
     public List<Chicken> chickens = new List<Chicken>();
 
-    public float chaseRange = 10f;
+    public float chaseRange = 7f;
 
     // called at the begining of this action
     public override bool OnActionEnter()
