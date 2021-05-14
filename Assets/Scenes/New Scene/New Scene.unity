@@ -576,6 +576,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2047549983}
   offset: {x: 0, y: 30, z: -10}
+--- !u!114 &418352884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 873433553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ccd69ac5559d1499dc42c83d295a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &512335898
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +714,7 @@ MonoBehaviour:
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []
-  hungerTime: 10
+  hungerTime: 20
   hungerTimer: 0
 --- !u!114 &512335904
 MonoBehaviour:
@@ -741,15 +752,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 512335898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef96aa07222fda44095c7026479fac02, type: 3}
+  m_Script: {fileID: 11500000, guid: aa235d9770c29e240b4e76bfa51d9012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Action
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  IsActionRunning: 0
-  duration: 0
   preConditions:
   - key: Hungry
     value: 0
@@ -759,8 +768,14 @@ MonoBehaviour:
   - key: ChickenFound
     value: 0
   navAgent: {fileID: 0}
+  duration: 0
   running: 0
-  wanderTarget: {x: 0, y: 0, z: 0}
+  keepWandering: 1
+  chickens:
+  - {fileID: 1210832021}
+  - {fileID: 418352884}
+  - {fileID: 634966941}
+  chaseRange: 10
 --- !u!195 &512335906
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -907,6 +922,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &634966941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 6980701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ccd69ac5559d1499dc42c83d295a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &769477262
 GameObject:
   m_ObjectHideFlags: 0

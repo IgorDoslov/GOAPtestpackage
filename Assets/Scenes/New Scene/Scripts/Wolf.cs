@@ -18,6 +18,7 @@ public class Wolf : Agent
     new void Start()
     {
         base.Start();
+        agentInternalState.ModifyInternalState("ChickenNotFound");
 
         //example:
         // Invoke("FunctionName", Random.Range(10, 20));
@@ -37,8 +38,6 @@ public class Wolf : Agent
             if (hungerTimer >= hungerTime)
             {
                 GetHungry();
-
-
             }
         }
     }

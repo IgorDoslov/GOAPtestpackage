@@ -162,8 +162,6 @@ namespace GOAP
                 currentAction.running = false;
                 currentAction = null;
                 actionQueue = null;
-                currentAction.duration = 0f;
-                durationFinished = false;
             }
         }
 

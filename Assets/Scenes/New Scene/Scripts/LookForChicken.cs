@@ -9,14 +9,14 @@ public class LookForChicken : Action
     public bool keepWandering = true;
     public List<Chicken> chickens = new List<Chicken>();
 
-    public float distanceToChicken = 30f;
-    public float closestChickenDistance = Mathf.Infinity;
-    public GameObject closestChickenObj = null;
+    public float chaseRange = 10f;
+
     // called at the begining of this action
     public override bool OnActionEnter()
     {
+
         keepWandering = true;
-        StartCoroutine(Wander());
+        //StartCoroutine(Wander());
         return true;
 
     }
@@ -31,57 +31,54 @@ public class LookForChicken : Action
 
     public override void OnActionUpdate()
     {
+        Wander();
+
+    }
+
+    public override bool ActionExitCondition()
+    {
         foreach (Chicken c in chickens)
         {
             float dist = Vector3.Distance(transform.position, c.transform.position);
 
-            if (dist < closestChickenDistance)
+            if (dist < chaseRange)
             {
-                closestChickenDistance = dist;
-                closestChickenObj = c.gameObject;
-
-                inventory.AddItem(closestChickenObj);
-                closestChickenDistance = Mathf.Infinity;
-                closestChickenObj = null;
+                inventory.AddItem(c.gameObject);
                 agentInternalState.ModifyInternalState("ChickenFound");
                 agentInternalState.RemoveState("ChickenNotFound");
-
+                keepWandering = false;
+                return true;
             }
             else
             {
                 agentInternalState.ModifyInternalState("ChickenNotFound");
                 agentInternalState.RemoveState("ChickenFound");
             }
-            break;
+
 
         }
-        
+        return false;
+
+
     }
 
-    public override bool ActionExitCondition()
+    public void Wander()
     {
-        keepWandering = false;
+        //while (keepWandering)
+        // {
+        //yield return new WaitForSeconds(3.0f);
+        float wanderRadius = 40f;
+        float wanderDistance = 20f;
+        float wanderJitter = 9f;
 
-        return true;
-    }
+        wanderTarget = new Vector3(Random.Range(0.1f, 1.0f) * wanderJitter, 0, Random.Range(0.1f, 1.0f) * wanderJitter);
+        wanderTarget.Normalize();
+        wanderTarget *= wanderRadius;
 
-    IEnumerator Wander()
-    {
-        while (keepWandering)
-        {
-            yield return new WaitForSeconds(3.0f);
-            float wanderRadius = 40f;
-            float wanderDistance = 20f;
-            float wanderJitter = 9f;
+        Vector3 targetLocal = wanderTarget + new Vector3(0, 0, wanderDistance);
+        Vector3 targetWorld = gameObject.transform.InverseTransformVector(targetLocal);
 
-            wanderTarget = new Vector3(Random.Range(0.1f, 1.0f) * wanderJitter, 0, Random.Range(0.1f, 1.0f) * wanderJitter);
-            wanderTarget.Normalize();
-            wanderTarget *= wanderRadius;
-
-            Vector3 targetLocal = wanderTarget + new Vector3(0, 0, wanderDistance);
-            Vector3 targetWorld = gameObject.transform.InverseTransformVector(targetLocal);
-
-            navAgent.SetDestination(targetWorld);
-        }
+        navAgent.SetDestination(targetWorld);
+        //  }
     }
 }
