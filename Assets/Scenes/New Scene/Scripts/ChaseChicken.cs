@@ -26,7 +26,9 @@ public class ChaseChicken : Action
     {
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if (dist < 2.0f)
-            return true;
+        { 
+            return true; 
+        }
         else
             return false;
     }
@@ -36,6 +38,8 @@ public class ChaseChicken : Action
     {
         GetComponent<Wolf>().hungerTimer = 0;
         agentInternalState.RemoveState("Hungry");
+        agentInternalState.RemoveState("ChickenFound");
+        agentInternalState.ModifyInternalState("ChickenNotFound");
         inventory.RemoveItem(target);
         return true;
     }

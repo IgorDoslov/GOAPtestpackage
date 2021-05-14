@@ -787,7 +787,7 @@ MonoBehaviour:
   - {fileID: 1210832021}
   - {fileID: 418352884}
   - {fileID: 634966941}
-  chaseRange: 10
+  chaseRange: 20
 --- !u!195 &512335906
 NavMeshAgent:
   m_ObjectHideFlags: 0
