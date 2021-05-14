@@ -8,6 +8,7 @@ public class LookForChicken : Action
     Vector3 wanderTarget = Vector3.zero;
     public bool keepWandering = true;
     public List<Chicken> chickens = new List<Chicken>();
+    public int targetChickenIndex;
 
     public float chaseRange = 7f;
 
@@ -37,13 +38,15 @@ public class LookForChicken : Action
 
     public override bool ActionExitCondition()
     {
-        foreach (Chicken c in chickens)
+        for (int i = 0; i < chickens.Count; i++)
         {
-            float dist = Vector3.Distance(transform.position, c.transform.position);
+
+            float dist = Vector3.Distance(transform.position, chickens[i].transform.position);
 
             if (dist < chaseRange)
             {
-                inventory.AddItem(c.gameObject);
+                targetChickenIndex = i;
+                inventory.AddItem(chickens[i].gameObject);
                 agentInternalState.ModifyInternalState("ChickenFound");
                 agentInternalState.RemoveState("ChickenNotFound");
                 keepWandering = false;
@@ -54,9 +57,8 @@ public class LookForChicken : Action
                 agentInternalState.ModifyInternalState("ChickenNotFound");
                 agentInternalState.RemoveState("ChickenFound");
             }
-
-
         }
+        
         return false;
 
 

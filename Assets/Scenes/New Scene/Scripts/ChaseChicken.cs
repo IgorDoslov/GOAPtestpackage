@@ -40,7 +40,10 @@ public class ChaseChicken : Action
         agentInternalState.RemoveState("Hungry");
         agentInternalState.RemoveState("ChickenFound");
         agentInternalState.ModifyInternalState("ChickenNotFound");
+        GetComponent<LookForChicken>().chickens.RemoveAt(GetComponent<LookForChicken>().targetChickenIndex);
         inventory.RemoveItem(target);
+        target.GetComponent<Chicken>().ChickenDie();
+
         return true;
     }
 }

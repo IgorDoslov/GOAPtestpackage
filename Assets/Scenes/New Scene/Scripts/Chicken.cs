@@ -81,4 +81,11 @@ public class Chicken : Agent
         agentInternalState.RemoveState("SatisfyThirst");
 
     }
+
+    public void ChickenDie()
+    {
+        World.Instance.GetQueue("Chicken").RemoveResource(gameObject);
+        
+        Destroy(gameObject);
+    }
 }
