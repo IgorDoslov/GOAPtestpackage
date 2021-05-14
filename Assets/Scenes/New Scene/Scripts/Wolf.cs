@@ -9,7 +9,11 @@ public class Wolf : Agent
     [HideInInspector]
     public float hungerTimer;
 
+    public List<Chicken> chickens = new List<Chicken>();
+
     public float distanceToChicken = 30f;
+    public float closestChickenDistance = Mathf.Infinity;
+    public GameObject closestChickenObj = null;
 
     new void Start()
     {
@@ -28,28 +32,49 @@ public class Wolf : Agent
     {
         hungerTimer += Time.deltaTime;
 
-        float dist = Vector3.Distance(transform.position, World.Instance.GetQueue("Chicken").queue.Peek().transform.position);
-
-        if (hungerTimer >= hungerTime && !agentInternalState.HasState("Hungry"))
+        if (!inventory.FindItemWithTag("Chicken"))
         {
-            GetHungry();
-            if (dist <= distanceToChicken)
+            if (hungerTimer >= hungerTime)
             {
-                agentInternalState.ModifyInternalState("ChickenFound");
+                GetHungry();
 
-            }
-            else
-            {
-                agentInternalState.ModifyInternalState("ChickenNotFound");
-                agentInternalState.RemoveState("ChickenFound");
+                foreach (Chicken c in chickens)
+                {
+                    float dist = Vector3.Distance(transform.position, c.transform.position);
 
+                    if (dist < closestChickenDistance)
+                    {
+                        closestChickenDistance = dist;
+                        closestChickenObj = c.gameObject;
+                    }
+                }
+
+                if (closestChickenObj != null)
+                {
+                    inventory.AddItem(closestChickenObj);
+                    closestChickenDistance = Mathf.Infinity;
+                    closestChickenObj = null;
+                    agentInternalState.ModifyInternalState("ChickenFound");
+                    agentInternalState.RemoveState("ChickenNotFound");
+
+                }
             }
         }
+        else
+        {
+            agentInternalState.ModifyInternalState("ChickenNotFound");
+            agentInternalState.RemoveState("ChickenFound");
+        }
+
     }
 
     void GetHungry()
     {
-        agentInternalState.ModifyInternalState("Hungry");
-        agentInternalState.RemoveState("SatisfyHunger");
+        if (!agentInternalState.HasState("Hungry"))
+        {
+            agentInternalState.ModifyInternalState("Hungry");
+            Debug.Log("Wolf is hungry");
+        }
     }
+
 }

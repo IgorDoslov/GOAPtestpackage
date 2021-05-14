@@ -83,6 +83,10 @@ namespace GOAP
         public abstract bool OnActionEnter();
         public abstract bool OnActionExit();
 
+       // public abstract bool OnActionUpdate();
+
+
+
 
     }
 }

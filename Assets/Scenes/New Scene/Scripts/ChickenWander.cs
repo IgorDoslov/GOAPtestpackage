@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
-public class LookForChicken : Action
+public class ChickenWander : Action
 {
     Vector3 wanderTarget = Vector3.zero;
     // called at the begining of this action
