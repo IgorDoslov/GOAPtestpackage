@@ -8,7 +8,8 @@ public class GoEat : Action
     // called at the begining of this action
     public override bool OnActionEnter()
     {
-        target = World.Instance.GetQueue("Food").RemoveResource().transform.gameObject;
+        if (World.Instance.GetQueue("Food").queue.Count > 0)
+            target = World.Instance.GetQueue("Food").RemoveResource().transform.gameObject;
         if (target == null)
             return false;
         navAgent.SetDestination(target.transform.position);
@@ -41,7 +42,7 @@ public class GoEat : Action
         agentInternalState.RemoveState("Hungry");
         agentInternalState.ModifyInternalState("SatisfyHunger");
         World.Instance.GetQueue("Food").AddResource(target);
-        inventory.RemoveItem(target);
+
 
         return true;
     }

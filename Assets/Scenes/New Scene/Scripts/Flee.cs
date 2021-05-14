@@ -10,7 +10,6 @@ public class Flee : Action
     // called at the begining of this action
     public override bool OnActionEnter()
     {
-        destination = transform.position + ((transform.position - wolf.transform.position) * 0.5f);
         navAgent.speed = 10.0f;
         return true;
 
@@ -18,12 +17,19 @@ public class Flee : Action
 
     public override void OnActionUpdate()
     {
+        destination = transform.position + ((transform.position - wolf.transform.position) * 0.5f);
+        navAgent.SetDestination(destination);
 
     }
 
     public override bool ActionExitCondition()
     {
-        return true;
+
+        float dist = Vector3.Distance(transform.position, wolf.transform.position);
+        if (dist > 10.0f)
+            return true;
+        else
+            return false;
     }
 
     // On exiting the state

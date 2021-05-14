@@ -26,7 +26,11 @@ public class GoToHouse : Action
     // The condition to exit the action
     public override bool ActionExitCondition()
     {
-        return true;
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+        if (dist < 2.0f)
+            return true;
+        else
+            return false;
     }
 
     // On exiting the state

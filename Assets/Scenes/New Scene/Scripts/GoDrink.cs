@@ -8,7 +8,8 @@ public class GoDrink : Action
     // called at the begining of this action
     public override bool OnActionEnter()
     {
-        target = World.Instance.GetQueue("Water").RemoveResource().transform.gameObject;
+        if (World.Instance.GetQueue("Water").queue.Count > 0)
+            target = World.Instance.GetQueue("Water").RemoveResource().transform.gameObject;
         if (target == null)
             return false;
         navAgent.SetDestination(target.transform.position);
@@ -38,7 +39,7 @@ public class GoDrink : Action
         agentInternalState.RemoveState("Thirsty");
         agentInternalState.ModifyInternalState("SatisfyThirst");
         World.Instance.GetQueue("Water").AddResource(target);
-        inventory.RemoveItem(target);
+
 
         return true;
     }
