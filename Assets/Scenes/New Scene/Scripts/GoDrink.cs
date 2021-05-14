@@ -5,7 +5,7 @@ using GOAP;
 
 public class GoDrink : Action
 {
-     // called at the begining of this action
+    // called at the begining of this action
     public override bool OnActionEnter()
     {
         target = World.Instance.GetQueue("Water").RemoveResource().transform.gameObject;
@@ -15,6 +15,16 @@ public class GoDrink : Action
             return false;
         return true;
 
+    }
+
+    public override bool OnActionUpdate()
+    {
+        return true;
+    }
+
+    public override bool ActionExitCondition()
+    {
+        return true;
     }
 
     // On exiting the state
@@ -28,4 +38,6 @@ public class GoDrink : Action
 
         return true;
     }
+
+
 }

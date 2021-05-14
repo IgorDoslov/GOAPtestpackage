@@ -9,7 +9,18 @@ public class #SCRIPTNAME# : Action
     public override bool OnActionEnter()
     {
         return true;
+    }
 
+    // Action Update
+    public override bool OnActionUpdate()
+    {
+        return true;
+    }
+
+    // The condition to exit the action
+    public override bool ActionExitCondition()
+    {
+        return true;
     }
 
     // On exiting the state

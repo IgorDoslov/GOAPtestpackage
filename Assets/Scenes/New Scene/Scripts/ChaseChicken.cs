@@ -15,6 +15,16 @@ public class ChaseChicken : Action
 
     }
 
+    public override bool OnActionUpdate()
+    {
+        return true;
+    }
+
+    public override bool ActionExitCondition()
+    {
+        return true;
+    }
+
     // On exiting the state
     public override bool OnActionExit()
     {

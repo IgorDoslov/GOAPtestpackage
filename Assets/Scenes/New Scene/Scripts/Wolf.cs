@@ -30,41 +30,41 @@ public class Wolf : Agent
 
     private void Update()
     {
-        hungerTimer += Time.deltaTime;
+        //hungerTimer += Time.deltaTime;
 
-        if (!inventory.FindItemWithTag("Chicken"))
-        {
-            if (hungerTimer >= hungerTime)
-            {
-                GetHungry();
+        //if (!inventory.FindItemWithTag("Chicken"))
+        //{
+        //    if (hungerTimer >= hungerTime)
+        //    {
+        //        GetHungry();
 
-                foreach (Chicken c in chickens)
-                {
-                    float dist = Vector3.Distance(transform.position, c.transform.position);
+        //        foreach (Chicken c in chickens)
+        //        {
+        //            float dist = Vector3.Distance(transform.position, c.transform.position);
 
-                    if (dist < closestChickenDistance)
-                    {
-                        closestChickenDistance = dist;
-                        closestChickenObj = c.gameObject;
-                    }
-                }
+        //            if (dist < closestChickenDistance)
+        //            {
+        //                closestChickenDistance = dist;
+        //                closestChickenObj = c.gameObject;
+        //            }
+        //        }
 
-                if (closestChickenObj != null)
-                {
-                    inventory.AddItem(closestChickenObj);
-                    closestChickenDistance = Mathf.Infinity;
-                    closestChickenObj = null;
-                    agentInternalState.ModifyInternalState("ChickenFound");
-                    agentInternalState.RemoveState("ChickenNotFound");
+        //        if (closestChickenObj != null)
+        //        {
+        //            inventory.AddItem(closestChickenObj);
+        //            closestChickenDistance = Mathf.Infinity;
+        //            closestChickenObj = null;
+        //            agentInternalState.ModifyInternalState("ChickenFound");
+        //            agentInternalState.RemoveState("ChickenNotFound");
 
-                }
-            }
-        }
-        else
-        {
-            agentInternalState.ModifyInternalState("ChickenNotFound");
-            agentInternalState.RemoveState("ChickenFound");
-        }
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    agentInternalState.ModifyInternalState("ChickenNotFound");
+        //    agentInternalState.RemoveState("ChickenFound");
+        //}
 
     }
 

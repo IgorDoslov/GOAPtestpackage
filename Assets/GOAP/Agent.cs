@@ -10,11 +10,11 @@ namespace GOAP
         public Dictionary<string, int> subGoals;
         public bool remove;
 
-        public SubGoal(string s, int i, bool r)
+        public SubGoal(string name, int value, bool shouldRemove)
         {
             subGoals = new Dictionary<string, int>();
-            subGoals.Add(s, i);
-            remove = r;
+            subGoals.Add(name, value);
+            remove = shouldRemove;
         }
     }
     [System.Serializable]
@@ -43,7 +43,8 @@ namespace GOAP
         public Action currentAction;
         SubGoal currentGoal;
 
-        
+        //used to create a list to display our current plan of actions to get to goal.
+        [HideInInspector] public List<Action> actionPlan = new List<Action>();
 
         // Start is called before the first frame update
         public void Start()
@@ -72,17 +73,26 @@ namespace GOAP
         {
             if (currentAction != null && currentAction.running)
             {
-                float distToTarget = Vector3.Distance(currentAction.destination, transform.position);
-                if (distToTarget < distanceToTargetThreshold)
+
+                if (currentAction.ActionExitCondition())
                 {
                     if (!invoked)
                     {
                         Invoke("CompleteAction", currentAction.duration);
                         invoked = true;
+                        return;
                     }
                 }
+
+                if (currentAction.running)
+                {
+                    currentAction.OnActionUpdate();
+                }
+                else
+                    planner = null; // Get a new plan
                 return;
             }
+
 
             if (planner == null || actionQueue == null)
             {
@@ -100,13 +110,25 @@ namespace GOAP
                     }
                 }
             }
+
+            // for debugging or use system.linq instead. Remove this maybe
+            actionPlan.Clear();
+            if (actionQueue != null)
+            {
+                foreach (Action a in actionQueue)
+                {
+                    actionPlan.Add(a);
+                }
+            }
+
+
             if (actionQueue != null && actionQueue.Count == 0)
             {
                 if (currentGoal.remove)
                 {
                     goalsDic.Remove(currentGoal);
                 }
-                planner = null;
+                planner = null; // get new plan
             }
             // sets our action and gets the target
             if (actionQueue != null && actionQueue.Count > 0)
@@ -114,22 +136,7 @@ namespace GOAP
                 currentAction = actionQueue.Dequeue();
                 if (currentAction.OnActionEnter())
                 {
-                    if (currentAction.target == null && currentAction.targetTag != "")
-                        currentAction.target = GameObject.FindWithTag(currentAction.targetTag);
-
-                    if (currentAction.target != null)
-                    {
-                        currentAction.running = true;
-
-                        currentAction.destination = currentAction.target.transform.position;
-                        Transform dest = currentAction.target.transform.Find("Destination");
-                        if (dest != null)
-                        {
-                            currentAction.destination = dest.position;
-                        }
-
-                    }
-                        currentAction.navAgent.SetDestination(currentAction.destination);
+                    currentAction.running = true;
                 }
                 else
                 {

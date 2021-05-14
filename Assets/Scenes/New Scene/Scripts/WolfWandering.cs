@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
-public class ChickenWander : Action
+public class WolfWandering : Action
 {
     Vector3 wanderTarget = Vector3.zero;
     // called at the begining of this action
@@ -12,6 +12,16 @@ public class ChickenWander : Action
         Wander();
         return true;
 
+    }
+
+    public override bool OnActionUpdate()
+    {
+        return true;
+    }
+
+    public override bool ActionExitCondition()
+    {
+        return true;
     }
 
     // On exiting the state

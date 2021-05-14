@@ -11,13 +11,10 @@ namespace GOAP
         public string actionName = "Action";
         [Tooltip("The cost of the action")]
         public float cost = 1.0f;
-        [Tooltip("A Game Object can be used as a target")]
+        [HideInInspector]
         public GameObject target;
         [HideInInspector]
         public Vector3 destination = Vector3.zero;
-        //[Tooltip("Pick the tag of the object to be used as a target"),TagSelector]
-        [TagSelector]
-        public string targetTag;
         [Tooltip("The duration of the action")]
         public float duration = 0;
         [Tooltip("The preconditions required for the action to occur")]
@@ -81,9 +78,12 @@ namespace GOAP
         }
 
         public abstract bool OnActionEnter();
+
         public abstract bool OnActionExit();
 
-       // public abstract bool OnActionUpdate();
+        public abstract bool OnActionUpdate();
+
+        public abstract bool ActionExitCondition();
 
 
 
