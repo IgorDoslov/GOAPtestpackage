@@ -148,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 512335898}
     - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: hungerTime
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: thirstTime
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3563243684947485484, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -787,6 +787,7 @@ MonoBehaviour:
   - {fileID: 1210832021}
   - {fileID: 418352884}
   - {fileID: 634966941}
+  targetChickenIndex: 0
   chaseRange: 20
 --- !u!195 &512335906
 NavMeshAgent:

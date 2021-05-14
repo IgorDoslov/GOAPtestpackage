@@ -6,7 +6,8 @@ using GOAP;
 public class Flee : Action
 {
     public GameObject wolf;
-    
+    Vector3 fleeTarget = Vector3.zero;
+
     // called at the begining of this action
     public override bool OnActionEnter()
     {
@@ -17,8 +18,7 @@ public class Flee : Action
 
     public override void OnActionUpdate()
     {
-        destination = transform.position + ((transform.position - wolf.transform.position) * 2.5f);
-        navAgent.SetDestination(destination);
+        ChickenFlee();
 
     }
 
@@ -38,5 +38,15 @@ public class Flee : Action
         navAgent.speed = 3.5f;
 
         return true;
+    }
+
+    public void ChickenFlee()
+    {
+
+        destination = transform.position + ((transform.position - wolf.transform.position) * 8.2f);
+
+        fleeTarget = new Vector3(Random.Range(0.1f, 1.0f) * destination.x, destination.y, Random.Range(0.1f, 1.0f) * destination.z);
+
+        navAgent.SetDestination(fleeTarget);
     }
 }
