@@ -14,7 +14,7 @@ public class Chicken : Agent
     public float thirstTimer;
 
     public GameObject wolf;
-    public float distanceToWolf = 20f;
+    public float distanceToWolf = 30f;
 
     new void Start()
     {

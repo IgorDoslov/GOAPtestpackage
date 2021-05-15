@@ -56,6 +56,7 @@ public class LookForChicken : Action
             {
                 agentInternalState.ModifyInternalState("ChickenNotFound");
                 agentInternalState.RemoveState("ChickenFound");
+                keepWandering = true;
             }
         }
         

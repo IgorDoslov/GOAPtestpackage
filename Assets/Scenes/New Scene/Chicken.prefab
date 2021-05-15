@@ -31,7 +31,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2627095903439145165}
-  m_Father: {fileID: 3563243684947485484}
+  m_Father: {fileID: 2627095903890331457}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enemy
+  m_Text: 
 --- !u!1 &2627095903890331456
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,9 +204,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.593, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2627095903318553796}
   m_Father: {fileID: 3563243684947485484}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3563243684947484887
 GameObject:
@@ -245,7 +246,6 @@ Transform:
   m_LocalPosition: {x: 4.82, y: 0.5, z: 17.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2627095903318553796}
   - {fileID: 2627095903890331457}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -366,11 +366,14 @@ MonoBehaviour:
     shouldRemove: 0
     priority: 10
   currentAction: {fileID: 0}
+  durationFinished: 0
+  actionPlan: []
   hungerTime: 30
   hungerTimer: 0
   thirstTime: 30
   thirstTimer: 0
-  player: {fileID: 0}
+  wolf: {fileID: 0}
+  distanceToWolf: 30
 --- !u!114 &3563243684947485482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,8 +390,6 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  targetTag: Food
-  duration: 10
   preConditions:
   - key: Hungry
     value: 0
@@ -396,6 +397,7 @@ MonoBehaviour:
   - key: SatisfyHunger
     value: 0
   navAgent: {fileID: 0}
+  duration: 10
   running: 0
 --- !u!114 &3563243684947484884
 MonoBehaviour:
@@ -413,8 +415,6 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  targetTag: Water
-  duration: 10
   preConditions:
   - key: Thirsty
     value: 0
@@ -422,6 +422,7 @@ MonoBehaviour:
   - key: SatisfyThirst
     value: 0
   navAgent: {fileID: 0}
+  duration: 10
   running: 0
 --- !u!114 &3563243684947484885
 MonoBehaviour:
@@ -439,8 +440,6 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  targetTag: Home
-  duration: 0
   preConditions:
   - key: SatisfyHunger
     value: 0
@@ -450,6 +449,7 @@ MonoBehaviour:
   - key: Safe
     value: 0
   navAgent: {fileID: 0}
+  duration: 0
   running: 0
 --- !u!114 &2627095902889149438
 MonoBehaviour:
@@ -480,8 +480,6 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  targetTag: 
-  duration: 0
   preConditions:
   - key: Run
     value: 0
@@ -489,5 +487,9 @@ MonoBehaviour:
   - key: Safe
     value: 0
   navAgent: {fileID: 0}
+  duration: 0
   running: 0
   wolf: {fileID: 0}
+  fleeSpeed: 11
+  normalSpeed: 3.5
+  distanceToWolf: 20

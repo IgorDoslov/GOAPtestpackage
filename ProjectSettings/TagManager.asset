@@ -9,6 +9,8 @@ TagManager:
   - Water
   - Chicken
   - Wolf
+  - Farmer
+  - WolfHome
   layers:
   - Default
   - TransparentFX

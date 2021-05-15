@@ -5,11 +5,13 @@ using GOAP;
 
 public class ChaseChicken : Action
 {
-    
-     // called at the begining of this action
+    public float chaseSpeed = 10f;
+    public float wanderSpeed = 5f;
+    // called at the begining of this action
     public override bool OnActionEnter()
     {
         target = inventory.FindItemWithTag("Chicken");
+        navAgent.speed = chaseSpeed;
         if (target == null)
             return false;
         return true;
@@ -36,10 +38,12 @@ public class ChaseChicken : Action
     // On exiting the state
     public override bool OnActionExit()
     {
+        navAgent.speed = wanderSpeed;
         GetComponent<Wolf>().hungerTimer = 0;
         agentInternalState.RemoveState("Hungry");
         agentInternalState.RemoveState("ChickenFound");
         agentInternalState.ModifyInternalState("ChickenNotFound");
+        agentInternalState.ModifyInternalState("CatchChicken");
         GetComponent<LookForChicken>().chickens.RemoveAt(GetComponent<LookForChicken>().targetChickenIndex);
         inventory.RemoveItem(target);
         target.GetComponent<Chicken>().ChickenDie();

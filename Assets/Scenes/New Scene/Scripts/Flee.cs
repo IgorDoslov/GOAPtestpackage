@@ -7,11 +7,14 @@ public class Flee : Action
 {
     public GameObject wolf;
     Vector3 fleeTarget = Vector3.zero;
+    public float fleeSpeed = 10;
+    public float normalSpeed = 3.5f;
+    public float distanceToWolf = 12.0f;
 
     // called at the begining of this action
     public override bool OnActionEnter()
     {
-        navAgent.speed = 10.0f;
+        navAgent.speed = fleeSpeed;
         return true;
 
     }
@@ -26,7 +29,7 @@ public class Flee : Action
     {
 
         float dist = Vector3.Distance(transform.position, wolf.transform.position);
-        if (dist > 10.0f)
+        if (dist > distanceToWolf)
             return true;
         else
             return false;
@@ -35,7 +38,7 @@ public class Flee : Action
     // On exiting the state
     public override bool OnActionExit()
     {
-        navAgent.speed = 3.5f;
+        navAgent.speed = normalSpeed;
 
         return true;
     }
