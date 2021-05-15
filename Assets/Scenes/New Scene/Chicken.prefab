@@ -364,13 +364,13 @@ MonoBehaviour:
   - goal: Safe
     value: 0
     shouldRemove: 0
-    priority: 10
+    priority: 1
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []
-  hungerTime: 30
+  hungerTime: 10
   hungerTimer: 0
-  thirstTime: 30
+  thirstTime: 10
   thirstTimer: 0
   wolf: {fileID: 0}
   distanceToWolf: 30
@@ -392,6 +392,8 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   preConditions:
   - key: Hungry
+    value: 0
+  - key: CanSeeFood
     value: 0
   afterEffects:
   - key: SatisfyHunger

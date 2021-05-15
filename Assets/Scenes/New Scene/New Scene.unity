@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 92170878}
   - component: {fileID: 92170877}
   - component: {fileID: 92170876}
+  - component: {fileID: 92170880}
   m_Layer: 0
   m_Name: Food (1)
   m_TagString: Food
@@ -299,6 +300,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &92170880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92170875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57118a6f6ffa5d46a7a15c2f576e5dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodAmount: 1
 --- !u!1 &252360363
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +421,7 @@ GameObject:
   - component: {fileID: 379123976}
   - component: {fileID: 379123975}
   - component: {fileID: 379123974}
+  - component: {fileID: 379123978}
   m_Layer: 0
   m_Name: Food (2)
   m_TagString: Food
@@ -490,6 +505,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379123978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379123973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57118a6f6ffa5d46a7a15c2f576e5dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodAmount: 1
 --- !u!1 &405646178
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &512335899
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -760,6 +788,8 @@ MonoBehaviour:
   navAgent: {fileID: 0}
   duration: 0
   running: 0
+  chaseSpeed: 10
+  wanderSpeed: 5
 --- !u!114 &512335905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,34 +1295,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2627095903439145167, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_Name
       value: Chicken (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 512335898}
     - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: wolf
       value: 
       objectReference: {fileID: 512335898}
-    - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: hungerTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563243684947485481, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: thirstTime
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3563243684947485484, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.88
@@ -1337,10 +1347,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3563243685181819605, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 2047549983}
     - target: {fileID: 3563243685181819605, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: wolf
       value: 
@@ -2019,6 +2025,7 @@ GameObject:
   - component: {fileID: 2011375572}
   - component: {fileID: 2011375571}
   - component: {fileID: 2011375570}
+  - component: {fileID: 2011375574}
   m_Layer: 0
   m_Name: Food
   m_TagString: Food
@@ -2102,6 +2109,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2011375574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011375569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57118a6f6ffa5d46a7a15c2f576e5dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodAmount: 1
 --- !u!1 &2047549983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2291,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3563243684947484885, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+      propertyPath: preConditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563243684947484885, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+      propertyPath: preConditions.Array.data[2].key
+      value: CantSeeFood
+      objectReference: {fileID: 0}
     - target: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
       propertyPath: m_Name
       value: Chicken
