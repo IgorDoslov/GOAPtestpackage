@@ -11,6 +11,7 @@ public class Flee : Action
     public float normalSpeed = 3.5f;
     public float distanceToWolf = 30.0f;
     public float distanceToHome = 30.0f;
+    float dist = 0;
 
     // called at the begining of this action
     public override bool OnActionEnter()
@@ -28,8 +29,8 @@ public class Flee : Action
 
     public override bool ActionExitCondition()
     {
-
-        float dist = Vector3.Distance(transform.position, wolf.transform.position);
+        if (wolf != null)
+            dist = Vector3.Distance(navAgent.transform.position, wolf.transform.position);
         if (dist > distanceToWolf)
             return true;
         else
@@ -46,8 +47,8 @@ public class Flee : Action
 
     public void ChickenFlee()
     {
-
-        destination = transform.position + ((transform.position - wolf.transform.position) * 8.2f);
+        if (wolf != null)
+            destination = transform.position + ((transform.position - wolf.transform.position) * 8.2f);
 
         fleeTarget = new Vector3(Random.Range(0.1f, 1.0f) * destination.x, destination.y, Random.Range(0.1f, 1.0f) * destination.z);
 

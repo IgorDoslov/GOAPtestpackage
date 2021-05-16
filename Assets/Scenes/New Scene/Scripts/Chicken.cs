@@ -17,6 +17,7 @@ public class Chicken : Agent
     public GameObject home;
     public float distanceToWolf = 30f;
     public float distanceToHome = 50;
+    float distToWlf = 0;
 
     new void Start()
     {
@@ -31,8 +32,8 @@ public class Chicken : Agent
         hungerTimer += Time.deltaTime;
         thirstTimer += Time.deltaTime;
 
-
-        float distToWlf = Vector3.Distance(transform.position, wolf.transform.position);
+        if (wolf != null)
+            distToWlf = Vector3.Distance(transform.position, wolf.transform.position);
         float distToHome = Vector3.Distance(transform.position, home.transform.position);
 
         if (distToWlf <= distanceToWolf)

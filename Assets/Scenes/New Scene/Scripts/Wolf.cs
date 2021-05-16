@@ -58,4 +58,9 @@ public class Wolf : Agent
         }
     }
 
+    public void WolfDie()
+    {
+        Destroy(gameObject);
+    }
+
 }
