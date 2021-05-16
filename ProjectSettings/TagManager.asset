@@ -11,6 +11,7 @@ TagManager:
   - Wolf
   - Farmer
   - WolfHome
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX

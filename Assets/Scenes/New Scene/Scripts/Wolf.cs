@@ -8,7 +8,8 @@ public class Wolf : Agent
     public float hungerTime;
     [HideInInspector]
     public float hungerTimer;
-
+    public GameObject home;
+    public float distanceToHome = 10f;
     //public List<Chicken> chickens = new List<Chicken>();
 
     //public float distanceToChicken = 30f;
@@ -32,6 +33,12 @@ public class Wolf : Agent
     private void Update()
     {
         hungerTimer += Time.deltaTime;
+
+        float dist = Vector3.Distance(transform.position, home.transform.position);
+        if (dist < distanceToHome)
+        {
+            agentInternalState.RemoveState("ChickenFound");
+        }
 
         if (!inventory.FindItemWithTag("Chicken"))
         {

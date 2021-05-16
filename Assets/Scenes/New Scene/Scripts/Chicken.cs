@@ -14,10 +14,13 @@ public class Chicken : Agent
     public float thirstTimer;
 
     public GameObject wolf;
+    public GameObject home;
     public float distanceToWolf = 30f;
+    public float distanceToHome = 50;
 
     new void Start()
     {
+
         base.Start();
 
     }
@@ -29,14 +32,17 @@ public class Chicken : Agent
         thirstTimer += Time.deltaTime;
 
 
-        Debug.Log("Food: " + World.Instance.GetQueue("Food").queue.Count);
+        float distToWlf = Vector3.Distance(transform.position, wolf.transform.position);
+        float distToHome = Vector3.Distance(transform.position, home.transform.position);
 
-        float dist = Vector3.Distance(transform.position, wolf.transform.position);
-
-        if (dist <= distanceToWolf)
+        if (distToWlf <= distanceToWolf)
         {
             if (!agentInternalState.HasState("Run"))
             {
+                if (distToHome < distanceToHome)
+                    agentInternalState.ModifyInternalState("CloseToHome");
+                else
+                    agentInternalState.RemoveState("CloseToHome");
                 agentInternalState.ModifyInternalState("Run");
                 StopAction();
                 // put it back into the world

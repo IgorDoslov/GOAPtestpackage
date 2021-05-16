@@ -5,13 +5,12 @@ using GOAP;
 
 public class Farmer : Agent
 {
-    public List<Food> food = new List<Food>();
-    public List<Water> water = new List<Water>();
+    public List<GameObject> food = new List<GameObject>();
+    public List<GameObject> water = new List<GameObject>();
 
     new void Start()
     {
         base.Start();
-
         //example:
         // Invoke("FunctionName", Random.Range(10, 20));
     }
@@ -26,5 +25,5 @@ public class Farmer : Agent
 
     //}
 
-    
+
 }

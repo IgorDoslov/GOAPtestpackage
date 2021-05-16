@@ -10,6 +10,7 @@ public class Flee : Action
     public float fleeSpeed = 10;
     public float normalSpeed = 3.5f;
     public float distanceToWolf = 30.0f;
+    public float distanceToHome = 30.0f;
 
     // called at the begining of this action
     public override bool OnActionEnter()

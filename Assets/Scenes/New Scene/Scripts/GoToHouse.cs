@@ -5,12 +5,17 @@ using GOAP;
 
 public class GoToHouse : Action
 {
-     // called at the begining of this action
+
+    public float fleeSpeed = 10;
+    public float normalSpeed = 3.5f;
+
+    // called at the begining of this action
     public override bool OnActionEnter()
     {
         target = GameObject.FindGameObjectWithTag("Home");
         if (target == null)
             return false;
+        navAgent.speed = fleeSpeed;
         navAgent.SetDestination(target.transform.position);
         return true;
 
@@ -28,7 +33,10 @@ public class GoToHouse : Action
     {
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if (dist < 2.0f)
+        {
+            navAgent.speed = normalSpeed;
             return true;
+        }
         else
             return false;
     }
