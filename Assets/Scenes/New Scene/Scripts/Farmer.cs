@@ -5,9 +5,6 @@ using GOAP;
 
 public class Farmer : Agent
 {
-    public List<GameObject> food = new List<GameObject>();
-    public List<GameObject> water = new List<GameObject>();
-
     new void Start()
     {
         base.Start();
