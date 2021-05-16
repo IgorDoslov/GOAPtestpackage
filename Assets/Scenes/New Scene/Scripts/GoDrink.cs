@@ -12,6 +12,7 @@ public class GoDrink : Action
             target = World.Instance.GetQueue("Water").RemoveResource().transform.gameObject;
         if (target == null)
             return false;
+        inventory.AddItem(target);
         navAgent.SetDestination(target.transform.position);
         return true;
 
@@ -39,6 +40,7 @@ public class GoDrink : Action
         agentInternalState.RemoveState("Thirsty");
         agentInternalState.ModifyInternalState("SatisfyThirst");
         World.Instance.GetQueue("Water").AddResource(target);
+        inventory.RemoveItem(target);
 
 
         return true;

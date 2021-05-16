@@ -28,19 +28,8 @@ public class Chicken : Agent
         hungerTimer += Time.deltaTime;
         thirstTimer += Time.deltaTime;
 
-        if (World.Instance.GetQueue("Food").queue.Count > 0)
-        {
-            agentInternalState.ModifyInternalState("CanSeeFood");
-            agentInternalState.RemoveState("CantSeeFood");
 
-        }
-        else
-        {
-            agentInternalState.RemoveState("CanSeeFood");
-            agentInternalState.ModifyInternalState("CantSeeFood");
-
-        }
-
+        Debug.Log("Food: " + World.Instance.GetQueue("Food").queue.Count);
 
         float dist = Vector3.Distance(transform.position, wolf.transform.position);
 
@@ -77,6 +66,18 @@ public class Chicken : Agent
             {
                 GetThirsty();
             }
+
+        }
+        if (World.Instance.GetQueue("Food").queue.Count > 0)
+        {
+            agentInternalState.ModifyInternalState("CanSeeFood");
+            agentInternalState.RemoveState("CantSeeFood");
+
+        }
+        else
+        {
+            agentInternalState.RemoveState("CanSeeFood");
+            agentInternalState.ModifyInternalState("CantSeeFood");
 
         }
     }

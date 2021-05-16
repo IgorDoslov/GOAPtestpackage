@@ -365,7 +365,7 @@ MonoBehaviour:
   - goal: Safe
     value: 0
     shouldRemove: 0
-    priority: 1
+    priority: 2
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []

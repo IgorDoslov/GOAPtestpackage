@@ -9,7 +9,7 @@ public class Flee : Action
     Vector3 fleeTarget = Vector3.zero;
     public float fleeSpeed = 10;
     public float normalSpeed = 3.5f;
-    public float distanceToWolf = 12.0f;
+    public float distanceToWolf = 30.0f;
 
     // called at the begining of this action
     public override bool OnActionEnter()

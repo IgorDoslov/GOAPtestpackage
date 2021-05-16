@@ -10,9 +10,9 @@ public class GoEat : Action
     {
         if (World.Instance.GetQueue("Food").queue.Count > 0)
             target = World.Instance.GetQueue("Food").RemoveResource().transform.gameObject;
-        
         if (target == null)
             return false;
+        inventory.AddItem(target);
         navAgent.SetDestination(target.transform.position);
         return true;
 
@@ -39,11 +39,11 @@ public class GoEat : Action
     // On exiting the state
     public override bool OnActionExit()
     {
-
         GetComponent<Chicken>().hungerTimer = 0;
         agentInternalState.RemoveState("Hungry");
         agentInternalState.ModifyInternalState("SatisfyHunger");
         World.Instance.GetQueue("Food").AddResource(target); // remove after wander working
+        inventory.RemoveItem(target);
 
         //if (target.GetComponent<Food>().foodAmount != 0)
         //{
@@ -54,7 +54,7 @@ public class GoEat : Action
         //{
         //    World.Instance.GetQueue("Food").RemoveResource(target);
         //}
-        
+
 
 
         return true;
