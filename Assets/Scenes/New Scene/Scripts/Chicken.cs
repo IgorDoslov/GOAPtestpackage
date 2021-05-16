@@ -27,7 +27,8 @@ public class Chicken : Agent
 
         hungerTimer += Time.deltaTime;
         thirstTimer += Time.deltaTime;
-        if(World.Instance.GetQueue("Food").queue.Count > 0)
+
+        if (World.Instance.GetQueue("Food").queue.Count > 0)
         {
             agentInternalState.ModifyInternalState("CanSeeFood");
             agentInternalState.RemoveState("CantSeeFood");
@@ -42,7 +43,7 @@ public class Chicken : Agent
 
 
         float dist = Vector3.Distance(transform.position, wolf.transform.position);
-        
+
         if (dist <= distanceToWolf)
         {
             if (!agentInternalState.HasState("Run"))
@@ -96,7 +97,7 @@ public class Chicken : Agent
     public void ChickenDie()
     {
         World.Instance.GetQueue("Chicken").RemoveResource(gameObject);
-        
+
         Destroy(gameObject);
     }
 }

@@ -225,9 +225,10 @@ GameObject:
   - component: {fileID: 3563243684947485481}
   - component: {fileID: 3563243684947485482}
   - component: {fileID: 3563243684947484884}
-  - component: {fileID: 3563243684947484885}
   - component: {fileID: 2627095902889149438}
   - component: {fileID: 3563243685181819605}
+  - component: {fileID: 2775590563782404091}
+  - component: {fileID: 1210832027}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Chicken
@@ -357,7 +358,7 @@ MonoBehaviour:
     value: 0
     shouldRemove: 0
     priority: 1
-  - goal: GoHome
+  - goal: Wander
     value: 0
     shouldRemove: 0
     priority: 1
@@ -368,9 +369,9 @@ MonoBehaviour:
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []
-  hungerTime: 10
+  hungerTime: 80
   hungerTimer: 0
-  thirstTime: 10
+  thirstTime: 80
   thirstTimer: 0
   wolf: {fileID: 0}
   distanceToWolf: 30
@@ -399,7 +400,7 @@ MonoBehaviour:
   - key: SatisfyHunger
     value: 0
   navAgent: {fileID: 0}
-  duration: 10
+  duration: 1
   running: 0
 --- !u!114 &3563243684947484884
 MonoBehaviour:
@@ -424,34 +425,7 @@ MonoBehaviour:
   - key: SatisfyThirst
     value: 0
   navAgent: {fileID: 0}
-  duration: 10
-  running: 0
---- !u!114 &3563243684947484885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3563243684947484887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe7e75c6dd19af48b0659d4a9f5409b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Action
-  cost: 1
-  target: {fileID: 0}
-  destination: {x: 0, y: 0, z: 0}
-  preConditions:
-  - key: SatisfyHunger
-    value: 0
-  - key: SatisfyThirst
-    value: 0
-  afterEffects:
-  - key: Safe
-    value: 0
-  navAgent: {fileID: 0}
-  duration: 0
+  duration: 1
   running: 0
 --- !u!114 &2627095902889149438
 MonoBehaviour:
@@ -495,3 +469,45 @@ MonoBehaviour:
   fleeSpeed: 11
   normalSpeed: 3.5
   distanceToWolf: 20
+--- !u!114 &2775590563782404091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563243684947484887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1ce5fefc85170428b69da9f07db6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 1
+  target: {fileID: 0}
+  destination: {x: 0, y: 0, z: 0}
+  preConditions:
+  - key: SatisfyHunger
+    value: 0
+  - key: SatisfyThirst
+    value: 0
+  afterEffects:
+  - key: Wander
+    value: 0
+  navAgent: {fileID: 0}
+  duration: 0
+  running: 0
+  wanderSpeed: 1
+  normalSpeed: 3.5
+--- !u!114 &1210832027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563243684947484887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615301e9b91ecf34aaa9de1b22c5b99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgent: {fileID: 3563243684947485481}

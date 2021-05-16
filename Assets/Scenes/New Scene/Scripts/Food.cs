@@ -23,11 +23,11 @@ public class Food : MonoBehaviour
     void Update()
     {
 
-        if (foodAmount <= 0)
-        {
-            World.Instance.GetQueue("Food").RemoveResource(gameObject);
-            gameObject.SetActive(false);
-        }
+        //if (foodAmount <= 0)
+        //{
+        //    World.Instance.GetQueue("Food").RemoveResource(gameObject);
+        //    gameObject.SetActive(false);
+        //}
     }
 }
 
