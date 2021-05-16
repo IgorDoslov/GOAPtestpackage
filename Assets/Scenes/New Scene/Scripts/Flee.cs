@@ -31,7 +31,7 @@ public class Flee : Action
     {
         if (wolf != null)
             dist = Vector3.Distance(navAgent.transform.position, wolf.transform.position);
-        if (dist > distanceToWolf)
+        if (wolf == null || dist > distanceToWolf)
             return true;
         else
             return false;
@@ -40,6 +40,7 @@ public class Flee : Action
     // On exiting the state
     public override bool OnActionExit()
     {
+        agentInternalState.RemoveState("Run");
         navAgent.speed = normalSpeed;
 
         return true;

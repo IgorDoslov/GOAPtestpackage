@@ -36,7 +36,7 @@ public class Chicken : Agent
             distToWlf = Vector3.Distance(transform.position, wolf.transform.position);
         float distToHome = Vector3.Distance(transform.position, home.transform.position);
 
-        if (distToWlf <= distanceToWolf)
+        if (wolf!= null && distToWlf <= distanceToWolf)
         {
             if (!agentInternalState.HasState("Run"))
             {

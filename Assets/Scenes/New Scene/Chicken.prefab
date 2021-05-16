@@ -397,8 +397,6 @@ MonoBehaviour:
   preConditions:
   - key: Hungry
     value: 0
-  - key: CanSeeFood
-    value: 0
   afterEffects:
   - key: SatisfyHunger
     value: 0
