@@ -40,7 +40,7 @@ public class Flee : Action
     // On exiting the state
     public override bool OnActionExit()
     {
-        agentInternalState.RemoveState("Run");
+        agentInternalState.ModifyState("Run", -1);
         navAgent.speed = normalSpeed;
 
         return true;

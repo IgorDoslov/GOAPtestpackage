@@ -41,7 +41,7 @@ public class GoEat : Action
     {
         GetComponent<Chicken>().hungerTimer = 0;
         agentInternalState.RemoveState("Hungry");
-        agentInternalState.ModifyInternalState("SatisfyHunger");
+        agentInternalState.ModifyState("SatisfyHunger", 1);
         World.Instance.GetQueue("Food").AddResource(target); // remove after wander working
         inventory.RemoveItem(target);
 

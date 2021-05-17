@@ -583,13 +583,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405646178}
-  m_LocalRotation: {x: 0.29700994, y: -0, z: -0, w: 0.9548744}
-  m_LocalPosition: {x: 0, y: 18.2, z: -33.5}
+  m_LocalRotation: {x: 0.6996033, y: -0, z: -0, w: 0.71453154}
+  m_LocalPosition: {x: -0.7, y: 152.15, z: 2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 34.556, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 88.791, y: 0, z: 0}
 --- !u!114 &405646182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405646178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b4a79aa07f28e04fb5fcedf91f2eedf, type: 3}
   m_Name: 
@@ -1587,7 +1587,9 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  preConditions: []
+  preConditions:
+  - key: CantSeeWolf
+    value: 0
   afterEffects:
   - key: Patrol
     value: 0

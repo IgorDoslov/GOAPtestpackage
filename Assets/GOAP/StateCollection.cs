@@ -31,6 +31,12 @@ namespace GOAP
             states.Add(key, value);
         }
 
+        public void AddInternalState(string key)
+        {
+            if (!states.ContainsKey(key))
+                states.Add(key, 0);
+        }
+
         public void ModifyState(string key, int value)
         {
             if (states.ContainsKey(key))

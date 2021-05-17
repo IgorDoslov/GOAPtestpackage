@@ -41,9 +41,9 @@ public class Chicken : Agent
             if (!agentInternalState.HasState("Run"))
             {
                 if (distToHome < distanceToHome)
-                    agentInternalState.ModifyInternalState("CloseToHome");
+                    agentInternalState.ModifyState("CloseToHome", 1);
                 else
-                    agentInternalState.RemoveState("CloseToHome");
+                    agentInternalState.ModifyState("CloseToHome", -1);
                 agentInternalState.ModifyInternalState("Run");
                 StopAction();
                 // put it back into the world

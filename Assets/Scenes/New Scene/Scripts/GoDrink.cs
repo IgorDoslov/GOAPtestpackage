@@ -38,7 +38,7 @@ public class GoDrink : Action
     {
         GetComponent<Chicken>().thirstTimer = 0;
         agentInternalState.RemoveState("Thirsty");
-        agentInternalState.ModifyInternalState("SatisfyThirst");
+        agentInternalState.ModifyState("SatisfyThirst", 1);
         World.Instance.GetQueue("Water").AddResource(target);
         inventory.RemoveItem(target);
 

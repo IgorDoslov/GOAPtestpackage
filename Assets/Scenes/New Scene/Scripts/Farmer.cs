@@ -10,6 +10,7 @@ public class Farmer : Agent
     float dist = 0;
     new void Start()
     {
+        agentInternalState.ModifyState("CantSeeWolf", 1);
         base.Start();
         //example:
         // Invoke("FunctionName", Random.Range(10, 20));
@@ -27,12 +28,11 @@ public class Farmer : Agent
 
         if (wolf != null && dist < distanceToWolf)
         {
-            agentInternalState.ModifyInternalState("CanSeeWolf");
+            agentInternalState.RemoveState("CantSeeWolf");
+            agentInternalState.AddInternalState("CanSeeWolf");
+
         }
-        else
-        {
-            agentInternalState.RemoveState("CanSeeWolf");
-        }
+        
     }
 
 

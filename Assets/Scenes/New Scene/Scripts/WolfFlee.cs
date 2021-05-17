@@ -40,6 +40,9 @@ public class WolfFlee : Action
     // On exiting the state
     public override bool OnActionExit()
     {
+        navAgent.speed = normalSpeed;
+        agentInternalState.ModifyState("Run", -1);
+
         return true;
     }
 

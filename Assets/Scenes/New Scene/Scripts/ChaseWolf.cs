@@ -29,7 +29,7 @@ public class ChaseWolf : Action
     public override bool ActionExitCondition()
     {
         float dist = Vector3.Distance(transform.position, wolf.transform.position);
-        if (!agentInternalState.HasState("CanSeeWolf") || dist < 2.0f)
+        if (dist < 2.0f)
             return true;
         else
             return false;
@@ -39,8 +39,12 @@ public class ChaseWolf : Action
     public override bool OnActionExit()
     {
         navAgent.speed = normalSpeed;
+
+        agentInternalState.AddInternalState("CantSeeWolf");
         agentInternalState.RemoveState("CanSeeWolf");
-        //wolf.GetComponent<Wolf>().WolfDie();
+        agentInternalState.AddInternalState("CatchWolf");
+
+        wolf.GetComponent<Wolf>().WolfDie();
         return true;
     }
 }

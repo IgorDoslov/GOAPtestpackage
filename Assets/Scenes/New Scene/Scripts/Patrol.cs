@@ -33,7 +33,7 @@ public class Patrol : Action
     // The condition to exit the action
     public override bool ActionExitCondition()
     {
-        if (agentInternalState.HasState("CanSeeWolf"))
+        if (!agentInternalState.HasState("CantSeeWolf"))
             return true;
         else
             return false;
