@@ -8,7 +8,7 @@ public class WolfFlee : Action
     public GameObject farmer;
     Vector3 fleeTarget = Vector3.zero;
     public float fleeSpeed = 10;
-    public float normalSpeed = 3.5f;
+    public float normalSpeed = 6f;
     public float distanceToFarmer = 30.0f;
     public float distanceToHome = 30.0f;
     float dist = 0;

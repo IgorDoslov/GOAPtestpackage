@@ -634,6 +634,7 @@ GameObject:
   - component: {fileID: 512335904}
   - component: {fileID: 512335908}
   - component: {fileID: 512335909}
+  - component: {fileID: 512335910}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Wolf
@@ -744,13 +745,20 @@ MonoBehaviour:
     value: 0
     shouldRemove: 0
     priority: 1
+  - goal: Safe
+    value: 0
+    shouldRemove: 0
+    priority: 1
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []
-  hungerTime: 50
+  hungerTime: 30
   hungerTimer: 0
   home: {fileID: 514320341}
+  farmer: {fileID: 1116774552}
   distanceToHome: 15
+  distanceToFarmer: 30
+  distToF: 0
 --- !u!114 &512335904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +901,36 @@ MonoBehaviour:
   navAgent: {fileID: 0}
   duration: 0
   running: 0
+--- !u!114 &512335910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512335898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb0c741243c9be4aaf433a94f915869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 1
+  target: {fileID: 0}
+  destination: {x: 0, y: 0, z: 0}
+  preConditions:
+  - key: Run
+    value: 0
+  afterEffects:
+  - key: Safe
+    value: 0
+  navAgent: {fileID: 0}
+  duration: 0
+  running: 0
+  farmer: {fileID: 1116774552}
+  fleeSpeed: 20
+  normalSpeed: 6
+  distanceToFarmer: 30
+  distanceToHome: 30
 --- !u!1 &514320341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1647,7 @@ MonoBehaviour:
   duration: 0
   running: 0
   wolf: {fileID: 512335898}
-  chaseSpeed: 10
+  chaseSpeed: 8
   normalSpeed: 6
 --- !u!114 &1116774561
 MonoBehaviour:
@@ -1725,7 +1763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232312782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.73, y: 0, z: 54.6}
+  m_LocalPosition: {x: 12.9, y: 0, z: 54.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2014,7 +2052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680828382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.6, y: 0, z: 5.7}
+  m_LocalPosition: {x: 13.3, y: 0, z: 5.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2044,7 +2082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709864491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.3, y: 0, z: 5.7}
+  m_LocalPosition: {x: -13.1, y: 0, z: 5.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2462,7 +2500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145386950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34, y: 0, z: 55.7}
+  m_LocalPosition: {x: -19.1, y: 0, z: 55.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
