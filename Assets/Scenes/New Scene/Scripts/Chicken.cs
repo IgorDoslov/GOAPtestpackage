@@ -75,18 +75,18 @@ public class Chicken : Agent
             }
 
         }
-        if (World.Instance.GetQueue("Food").queue.Count > 0)
-        {
-            agentInternalState.ModifyInternalState("CanSeeFood");
-            agentInternalState.RemoveState("CantSeeFood");
+        //if (World.Instance.GetQueue("Food").queue.Count > 0)
+        //{
+        //    agentInternalState.ModifyInternalState("CanSeeFood");
+        //    agentInternalState.RemoveState("CantSeeFood");
 
-        }
-        else
-        {
-            agentInternalState.RemoveState("CanSeeFood");
-            agentInternalState.ModifyInternalState("CantSeeFood");
+        //}
+        //else
+        //{
+        //    agentInternalState.RemoveState("CanSeeFood");
+        //    agentInternalState.ModifyInternalState("CantSeeFood");
 
-        }
+        //}
     }
 
     void GetHungry()
@@ -104,8 +104,11 @@ public class Chicken : Agent
 
     public void ChickenDie()
     {
-        World.Instance.GetQueue("Chicken").RemoveResource(gameObject);
+        if (gameObject != null)
+        {
+            World.Instance.GetQueue("Chicken").RemoveResource(gameObject);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

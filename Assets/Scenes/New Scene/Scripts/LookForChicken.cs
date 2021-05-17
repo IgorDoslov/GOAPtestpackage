@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
+using System.Linq;
 
 public class LookForChicken : Action
 {
@@ -54,12 +55,14 @@ public class LookForChicken : Action
             }
             else
             {
+                if (inventory.items.Contains(chickens[i].gameObject))
+                    inventory.RemoveItem(chickens[i].gameObject);
                 agentInternalState.ModifyInternalState("ChickenNotFound");
                 agentInternalState.RemoveState("ChickenFound");
                 keepWandering = true;
             }
         }
-        
+
         return false;
 
 

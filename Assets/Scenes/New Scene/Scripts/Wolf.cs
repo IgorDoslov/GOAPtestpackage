@@ -38,6 +38,7 @@ public class Wolf : Agent
         if (dist < distanceToHome)
         {
             agentInternalState.RemoveState("ChickenFound");
+            agentInternalState.ModifyInternalState("ChickenNotFound");
         }
 
         if (!inventory.FindItemWithTag("Chicken"))
@@ -60,7 +61,8 @@ public class Wolf : Agent
 
     public void WolfDie()
     {
-        Destroy(gameObject);
+        if (gameObject != null)
+            Destroy(gameObject);
     }
 
 }

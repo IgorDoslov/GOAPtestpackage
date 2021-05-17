@@ -5,13 +5,15 @@ using GOAP;
 
 public class WolfGoHome : Action
 {
-     // called at the begining of this action
+    // called at the begining of this action
     public override bool OnActionEnter()
     {
         target = GameObject.FindGameObjectWithTag("WolfHome");
         if (target == null)
             return false;
         navAgent.SetDestination(target.transform.position);
+        if (!agentInternalState.HasState("ChickenNotFound"))
+            agentInternalState.AddState("ChickenNotFound", 1);
         return true;
     }
 

@@ -7,13 +7,15 @@ public class ChaseChicken : Action
 {
     public float chaseSpeed = 10f;
     public float wanderSpeed = 5f;
+    //public bool chickenCaught = false;
     // called at the begining of this action
     public override bool OnActionEnter()
     {
         target = inventory.FindItemWithTag("Chicken");
-        navAgent.speed = chaseSpeed;
         if (target == null)
             return false;
+        //chickenCaught = false;
+        navAgent.speed = chaseSpeed;
         return true;
 
     }
@@ -21,15 +23,19 @@ public class ChaseChicken : Action
     public override void OnActionUpdate()
     {
         navAgent.SetDestination(target.transform.position);
-        
     }
 
     public override bool ActionExitCondition()
     {
         float dist = Vector3.Distance(transform.position, target.transform.position);
-        if (dist < 2.0f)
-        { 
-            return true; 
+        if (agentInternalState.HasState("ChickenNotFound"))
+        {
+            return true;
+        }
+        else if (dist < 2.0f)
+        {
+            //chickenCaught = true;
+            return true;
         }
         else
             return false;
@@ -44,8 +50,12 @@ public class ChaseChicken : Action
         agentInternalState.RemoveState("ChickenFound");
         agentInternalState.ModifyInternalState("ChickenNotFound");
         agentInternalState.ModifyInternalState("CatchChicken");
-        GetComponent<LookForChicken>().chickens.RemoveAt(GetComponent<LookForChicken>().targetChickenIndex);
+        //if (chickenCaught == true)
+        //{ 
+        //    chickenCaught = false;
+        //}
         inventory.RemoveItem(target);
+        GetComponent<LookForChicken>().chickens.RemoveAt(GetComponent<LookForChicken>().targetChickenIndex);
         target.GetComponent<Chicken>().ChickenDie();
 
         return true;
