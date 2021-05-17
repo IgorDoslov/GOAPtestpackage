@@ -370,14 +370,14 @@ MonoBehaviour:
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []
-  hungerTime: 40
+  hungerTime: 30
   hungerTimer: 0
-  thirstTime: 40
+  thirstTime: 30
   thirstTimer: 0
   wolf: {fileID: 0}
   home: {fileID: 0}
   distanceToWolf: 30
-  distanceToHome: 50
+  distanceToHome: 30
 --- !u!114 &3563243684947485482
 MonoBehaviour:
   m_ObjectHideFlags: 0

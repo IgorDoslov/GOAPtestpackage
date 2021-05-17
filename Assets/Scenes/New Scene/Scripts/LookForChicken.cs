@@ -8,8 +8,9 @@ public class LookForChicken : Action
 {
     Vector3 wanderTarget = Vector3.zero;
     public bool keepWandering = true;
-    public List<Chicken> chickens = new List<Chicken>();
     public int targetChickenIndex;
+    public GameObject targetChicken;
+    public Wolf wolf;
 
     public float chaseRange = 7f;
 
@@ -17,6 +18,7 @@ public class LookForChicken : Action
     public override bool OnActionEnter()
     {
 
+        wolf = GetComponent<Wolf>();
         keepWandering = true;
         //StartCoroutine(Wander());
         return true;
@@ -39,25 +41,29 @@ public class LookForChicken : Action
 
     public override bool ActionExitCondition()
     {
-        for (int i = 0; i < chickens.Count; i++)
+        for (int i = 0; i < wolf.chickens.Count; i++)
         {
 
-            float dist = Vector3.Distance(transform.position, chickens[i].transform.position);
+            float dist = Vector3.Distance(transform.position, wolf.chickens[i].transform.position);
 
             if (dist < chaseRange)
             {
                 targetChickenIndex = i;
-                inventory.AddItem(chickens[i].gameObject);
-                agentInternalState.ModifyInternalState("ChickenFound");
+                if (!inventory.FindItemWithTag("Chicken"))
+                {
+                    inventory.AddItem(wolf.chickens[i].gameObject);
+                    targetChicken = wolf.chickens[i].gameObject;
+                }
+                agentInternalState.AddInternalState("ChickenFound");
                 agentInternalState.RemoveState("ChickenNotFound");
                 keepWandering = false;
                 return true;
             }
             else
             {
-                if (inventory.items.Contains(chickens[i].gameObject))
-                    inventory.RemoveItem(chickens[i].gameObject);
-                agentInternalState.ModifyInternalState("ChickenNotFound");
+                if (inventory.items.Contains(wolf.chickens[i].gameObject))
+                    inventory.RemoveItem(wolf.chickens[i].gameObject);
+                agentInternalState.AddInternalState("ChickenNotFound");
                 agentInternalState.RemoveState("ChickenFound");
                 keepWandering = true;
             }

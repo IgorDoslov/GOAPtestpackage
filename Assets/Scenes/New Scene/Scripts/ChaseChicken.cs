@@ -7,14 +7,15 @@ public class ChaseChicken : Action
 {
     public float chaseSpeed = 10f;
     public float wanderSpeed = 5f;
-    //public bool chickenCaught = false;
+    public bool chickenCaught = false;
     // called at the begining of this action
     public override bool OnActionEnter()
     {
-        target = inventory.FindItemWithTag("Chicken");
+        target = GetComponent<LookForChicken>().targetChicken;
+
         if (target == null)
             return false;
-        //chickenCaught = false;
+        chickenCaught = false;
         navAgent.speed = chaseSpeed;
         return true;
 
@@ -28,13 +29,10 @@ public class ChaseChicken : Action
     public override bool ActionExitCondition()
     {
         float dist = Vector3.Distance(transform.position, target.transform.position);
-        if (agentInternalState.HasState("ChickenNotFound"))
+
+        if (dist < 2.0f)
         {
-            return true;
-        }
-        else if (dist < 2.0f)
-        {
-            //chickenCaught = true;
+            chickenCaught = true;
             return true;
         }
         else
@@ -48,15 +46,16 @@ public class ChaseChicken : Action
         GetComponent<Wolf>().hungerTimer = 0;
         agentInternalState.RemoveState("Hungry");
         agentInternalState.RemoveState("ChickenFound");
-        agentInternalState.ModifyInternalState("ChickenNotFound");
-        agentInternalState.ModifyInternalState("CatchChicken");
-        //if (chickenCaught == true)
-        //{ 
-        //    chickenCaught = false;
-        //}
-        inventory.RemoveItem(target);
-        GetComponent<LookForChicken>().chickens.RemoveAt(GetComponent<LookForChicken>().targetChickenIndex);
-        target.GetComponent<Chicken>().ChickenDie();
+        agentInternalState.AddInternalState("ChickenNotFound");
+        if (chickenCaught == true)
+        {
+            chickenCaught = false;
+            agentInternalState.AddInternalState("CatchChicken");
+            target.GetComponent<Chicken>().ChickenDie();
+        }
+        if (inventory.FindItemWithTag(target.tag))
+            inventory.RemoveItem(target);
+        GetComponent<LookForChicken>().wolf.chickens.RemoveAt(GetComponent<LookForChicken>().targetChickenIndex);
 
         return true;
     }

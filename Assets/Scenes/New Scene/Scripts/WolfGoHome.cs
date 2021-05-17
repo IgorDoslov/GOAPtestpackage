@@ -13,7 +13,7 @@ public class WolfGoHome : Action
             return false;
         navAgent.SetDestination(target.transform.position);
         if (!agentInternalState.HasState("ChickenNotFound"))
-            agentInternalState.AddState("ChickenNotFound", 1);
+            agentInternalState.AddInternalState("ChickenNotFound");
         return true;
     }
 

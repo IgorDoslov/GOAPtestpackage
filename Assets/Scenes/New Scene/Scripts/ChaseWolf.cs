@@ -8,11 +8,14 @@ public class ChaseWolf : Action
     public GameObject wolf;
     public float chaseSpeed = 15;
     public float normalSpeed = 3.5f;
+    public float distanceToWolf = 40f;
+    public bool wolfCaught = false;
     // called at the begining of this action
     public override bool OnActionEnter()
     {
         if (wolf == null)
             return false;
+        
         navAgent.speed = chaseSpeed;
         navAgent.SetDestination(wolf.transform.position);
         return true;
@@ -30,7 +33,14 @@ public class ChaseWolf : Action
     {
         float dist = Vector3.Distance(transform.position, wolf.transform.position);
         if (dist < 2.0f)
+        {
+            wolfCaught = true;
             return true;
+        }
+        else if (dist > distanceToWolf)
+        {
+            return true;
+        }
         else
             return false;
     }
@@ -42,9 +52,12 @@ public class ChaseWolf : Action
 
         agentInternalState.AddInternalState("CantSeeWolf");
         agentInternalState.RemoveState("CanSeeWolf");
-        agentInternalState.AddInternalState("CatchWolf");
-
-        wolf.GetComponent<Wolf>().WolfDie();
+        if (wolfCaught)
+        {
+            agentInternalState.AddInternalState("CatchWolf");
+            wolf.GetComponent<Wolf>().WolfDie();
+            wolfCaught = false;
+        }
         return true;
     }
 }

@@ -13,6 +13,9 @@ public class Wolf : Agent
     public float distanceToHome = 10f;
     public float distanceToFarmer = 30f;
     public float distToF = 0f;
+    public List<GameObject> chickens = new List<GameObject>();
+    private ChickensInScene cis = null;
+
     //public List<Chicken> chickens = new List<Chicken>();
 
     //public float distanceToChicken = 30f;
@@ -21,8 +24,14 @@ public class Wolf : Agent
 
     new void Start()
     {
+        cis = FindObjectOfType<ChickensInScene>();
+        foreach (var c in cis.chicks)
+        {
+            chickens.Add(c);
+        }
         base.Start();
-        agentInternalState.ModifyInternalState("ChickenNotFound");
+        agentInternalState.AddInternalState("ChickenNotFound");
+
 
         //example:
         // Invoke("FunctionName", Random.Range(10, 20));
@@ -39,22 +48,22 @@ public class Wolf : Agent
 
         if (farmer != null)
             distToF = Vector3.Distance(transform.position, farmer.transform.position);
-        float dist = Vector3.Distance(transform.position, home.transform.position);
-        if (dist < distanceToHome)
-        {
-            agentInternalState.RemoveState("ChickenFound");
-            agentInternalState.ModifyInternalState("ChickenNotFound");
-        }
+        //float dist = Vector3.Distance(transform.position, home.transform.position);
+        //if (dist < distanceToHome)
+        //{
+        //    agentInternalState.RemoveState("ChickenFound");
+        //    agentInternalState.AddInternalState("ChickenNotFound");
+        //}
 
         if (farmer != null && distToF <= distanceToFarmer)
         {
             if (!agentInternalState.HasState("Run"))
             {
-                if (dist < distanceToHome)
-                    agentInternalState.ModifyInternalState("CloseToHome");
-                else
-                    agentInternalState.RemoveState("CloseToHome");
-                agentInternalState.ModifyInternalState("Run");
+                //if (dist < distanceToHome)
+                //    agentInternalState.AddInternalState("CloseToHome");
+                //else
+                //    agentInternalState.RemoveState("CloseToHome");
+                agentInternalState.AddInternalState("Run");
                 StopAction();
                 // put it back into the world
                 if (inventory.FindItemWithTag("Chicken"))
@@ -70,10 +79,10 @@ public class Wolf : Agent
             agentInternalState.RemoveState("Run");
 
 
-            if (hungerTimer >= hungerTime && !agentInternalState.HasState("Hungry"))
-            {
-                GetHungry();
-            }
+            //if (hungerTimer >= hungerTime && !agentInternalState.HasState("Hungry"))
+            //{
+            //    GetHungry();
+            //}
         }
 
         if (!inventory.FindItemWithTag("Chicken"))
@@ -89,7 +98,7 @@ public class Wolf : Agent
     {
         if (!agentInternalState.HasState("Hungry"))
         {
-            agentInternalState.ModifyInternalState("Hungry");
+            agentInternalState.AddInternalState("Hungry");
             Debug.Log("Wolf is hungry");
         }
     }
