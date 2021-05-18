@@ -19,14 +19,18 @@ namespace GOAP
 
         private static StateCollection worldStates;
 
+        // The resources entered in the inspector to be added to the resources dictionary
+        public List<InspectorResource> resourceConfig = new List<InspectorResource>();
+
+        // resources dictionary
         private static Dictionary<string, ResourceQueue> resources = new Dictionary<string, ResourceQueue>();
 
-        public List<InspectorResource> resourceConfig = new List<InspectorResource>();
 
         public void Start()
         {
             worldStates = new StateCollection();
 
+            // add the resources entered in the inspector to the resources dictionary
             foreach (var r in resourceConfig)
             {
                 var res = new ResourceQueue(r.tag,r.objectQueue, worldStates);

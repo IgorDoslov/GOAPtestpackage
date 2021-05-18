@@ -66,7 +66,7 @@ public class Wolf : Agent
                     if (inventory.FindItemWithTag("Chicken"))
                     {
                         World.Instance.GetQueue("Chicken").AddResource(inventory.FindItemWithTag("Chicken"));
-                        inventory.items.Clear();
+                        inventory.inventoryItems.Clear();
                     }
 
                 }

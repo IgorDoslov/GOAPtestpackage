@@ -44,7 +44,7 @@ public class Chicken : Agent
                     agentInternalState.ModifyState("CloseToHome", 1);
                 else
                     agentInternalState.ModifyState("CloseToHome", -1);
-                agentInternalState.ModifyInternalState("Run");
+                agentInternalState.AddInternalState("Run");
                 StopAction();
                 // put it back into the world
                 if (inventory.FindItemWithTag("Food"))
@@ -91,13 +91,13 @@ public class Chicken : Agent
 
     void GetHungry()
     {
-        agentInternalState.ModifyInternalState("Hungry");
+        agentInternalState.AddInternalState("Hungry");
         agentInternalState.RemoveState("SatisfyHunger");
     }
 
     void GetThirsty()
     {
-        agentInternalState.ModifyInternalState("Thirsty");
+        agentInternalState.AddInternalState("Thirsty");
         agentInternalState.RemoveState("SatisfyThirst");
 
     }

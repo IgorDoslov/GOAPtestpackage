@@ -50,7 +50,7 @@ public class GAgentVisualEditor : Editor
         }
 
         GUILayout.Label("Inventory: ");
-        foreach (GameObject g in agent.gameObject.GetComponent<Agent>().inventory.items)
+        foreach (GameObject g in agent.gameObject.GetComponent<Agent>().inventory.inventoryItems)
         {
             GUILayout.Label("====  " + g.tag);
         }

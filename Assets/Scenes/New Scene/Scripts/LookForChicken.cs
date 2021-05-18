@@ -61,7 +61,7 @@ public class LookForChicken : Action
             }
             else
             {
-                if (inventory.items.Contains(wolf.chickens[i].gameObject))
+                if (inventory.inventoryItems.Contains(wolf.chickens[i].gameObject))
                     inventory.RemoveItem(wolf.chickens[i].gameObject);
                 agentInternalState.AddInternalState("ChickenNotFound");
                 agentInternalState.RemoveState("ChickenFound");
