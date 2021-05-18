@@ -11,7 +11,7 @@ public class Wolf : Agent
     public GameObject home;
     public Transform resetPoint;
     public GameObject farmer;
-    public float distanceToHome = 10f;
+    public float distanceToHome = 2f;
     public float distanceToFarmer = 30f;
     public float distToF = 0f;
     public List<GameObject> chickens = new List<GameObject>();
@@ -49,42 +49,38 @@ public class Wolf : Agent
 
         if (farmer != null)
             distToF = Vector3.Distance(transform.position, farmer.transform.position);
-        //float dist = Vector3.Distance(transform.position, home.transform.position);
-        //if (dist < distanceToHome)
-        //{
-        //    agentInternalState.RemoveState("ChickenFound");
-        //    agentInternalState.AddInternalState("ChickenNotFound");
-        //}
+        float dist = Vector3.Distance(transform.position, home.transform.position);
 
-        if (farmer != null && distToF <= distanceToFarmer)
-        {
-            if (!agentInternalState.HasState("Run"))
+        if (dist > distanceToHome)
+            if (farmer != null && distToF <= distanceToFarmer)
             {
-                //if (dist < distanceToHome)
-                //    agentInternalState.AddInternalState("CloseToHome");
-                //else
-                //    agentInternalState.RemoveState("CloseToHome");
-                agentInternalState.AddInternalState("Run");
-                StopAction();
-                // put it back into the world
-                if (inventory.FindItemWithTag("Chicken"))
+                if (!agentInternalState.HasState("Run"))
                 {
-                    World.Instance.GetQueue("Chicken").AddResource(inventory.FindItemWithTag("Chicken"));
-                    inventory.items.Clear();
+                    //if (dist < distanceToHome)
+                    //    agentInternalState.AddInternalState("CloseToHome");
+                    //else
+                    //    agentInternalState.RemoveState("CloseToHome");
+                    agentInternalState.AddInternalState("Run");
+                    StopAction();
+                    // put it back into the world
+                    if (inventory.FindItemWithTag("Chicken"))
+                    {
+                        World.Instance.GetQueue("Chicken").AddResource(inventory.FindItemWithTag("Chicken"));
+                        inventory.items.Clear();
+                    }
+
                 }
-
             }
-        }
-        else
-        {
-            agentInternalState.RemoveState("Run");
+            else
+            {
+                agentInternalState.RemoveState("Run");
 
 
-            //if (hungerTimer >= hungerTime && !agentInternalState.HasState("Hungry"))
-            //{
-            //    GetHungry();
-            //}
-        }
+                //if (hungerTimer >= hungerTime && !agentInternalState.HasState("Hungry"))
+                //{
+                //    GetHungry();
+                //}
+            }
 
         if (!inventory.FindItemWithTag("Chicken"))
         {
@@ -100,7 +96,7 @@ public class Wolf : Agent
         if (!agentInternalState.HasState("Hungry"))
         {
             agentInternalState.AddInternalState("Hungry");
-           // Debug.Log("Wolf is hungry");
+            // Debug.Log("Wolf is hungry");
         }
     }
 

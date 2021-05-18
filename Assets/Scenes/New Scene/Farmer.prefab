@@ -175,6 +175,8 @@ MonoBehaviour:
   preConditions:
   - key: CantSeeWolf
     value: 0
+  - key: IsHome
+    value: 0
   afterEffects:
   - key: Patrol
     value: 0
@@ -212,9 +214,9 @@ MonoBehaviour:
   duration: 0
   running: 0
   wolf: {fileID: 0}
-  chaseSpeed: 15
+  chaseSpeed: 9
   normalSpeed: 4
-  distanceToWolf: 40
+  distanceToWolf: 20
   wolfCaught: 0
 --- !u!114 &7031435033312158038
 MonoBehaviour:

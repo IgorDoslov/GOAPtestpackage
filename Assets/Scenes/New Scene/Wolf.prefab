@@ -180,10 +180,16 @@ MonoBehaviour:
   home: {fileID: 0}
   resetPoint: {fileID: 0}
   farmer: {fileID: 0}
-  distanceToHome: 15
+  distanceToHome: 2
   distanceToFarmer: 30
   distToF: 0
-  chickens: []
+  chickens:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &7730531218709822274
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class ChaseWolf : Action
     {
         if (wolf == null)
             return false;
-        
+
         navAgent.speed = chaseSpeed;
         navAgent.SetDestination(wolf.transform.position);
         return true;
@@ -52,6 +52,7 @@ public class ChaseWolf : Action
 
         agentInternalState.AddInternalState("CantSeeWolf");
         agentInternalState.RemoveState("CanSeeWolf");
+      
         if (wolfCaught)
         {
             agentInternalState.AddInternalState("CatchWolf");

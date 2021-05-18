@@ -301,6 +301,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodAmount: 1
+--- !u!1 &149481088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 617076477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &157207468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 3563243684288610603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &252360363
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +437,11 @@ Transform:
   m_Father: {fileID: 735343015}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &355319908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 1583360744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &379123973
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,6 +818,11 @@ PrefabInstance:
       objectReference: {fileID: 512335898}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+--- !u!1 &735343010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5097785893300086458, guid: 3039b856751f89e498e3ccd3ce6c0a30, type: 3}
+  m_PrefabInstance: {fileID: 5097785892557856626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &735343015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5097785893300086462, guid: 3039b856751f89e498e3ccd3ce6c0a30, type: 3}
@@ -1109,6 +1129,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1231741131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 910219445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1232312782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,7 +1158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232312782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.7, y: 0, z: 54.6}
+  m_LocalPosition: {x: 16.7, y: 0, z: 44.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1398,6 +1423,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1615771346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 873433553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1680828382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680828382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.4, y: 0, z: 5.7}
+  m_LocalPosition: {x: 16.6, y: 0, z: 18.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1452,7 +1482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709864491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.6, y: 0, z: 5.7}
+  m_LocalPosition: {x: -34.6, y: 0, z: 17.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1662,6 +1692,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodAmount: 1
+--- !u!1 &2019948546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
+  m_PrefabInstance: {fileID: 6980701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2047549983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1883,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145386950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.6, y: 0, z: 55.7}
+  m_LocalPosition: {x: -36.6, y: 0, z: 45.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1919,7 +1954,7 @@ PrefabInstance:
       objectReference: {fileID: 512335898}
     - target: {fileID: 1915733864233583806, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
       propertyPath: preConditions.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1915733864233583806, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
       propertyPath: patrolPoints.Array.data[0]
@@ -1939,7 +1974,7 @@ PrefabInstance:
       objectReference: {fileID: 2145386951}
     - target: {fileID: 1915733864233583806, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
       propertyPath: preConditions.Array.data[1].key
-      value: IsHome
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7031435033312158038, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
       propertyPath: homePoint
@@ -2096,7 +2131,7 @@ PrefabInstance:
     - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
       propertyPath: home
       value: 
-      objectReference: {fileID: 514320341}
+      objectReference: {fileID: 735343010}
     - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
       propertyPath: resetPoint
       value: 
@@ -2105,6 +2140,30 @@ PrefabInstance:
       propertyPath: farmer
       value: 
       objectReference: {fileID: 1116774552}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: chickens.Array.data[0]
+      value: 
+      objectReference: {fileID: 157207468}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: chickens.Array.data[1]
+      value: 
+      objectReference: {fileID: 1615771346}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: chickens.Array.data[2]
+      value: 
+      objectReference: {fileID: 2019948546}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: chickens.Array.data[3]
+      value: 
+      objectReference: {fileID: 149481088}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: chickens.Array.data[4]
+      value: 
+      objectReference: {fileID: 1231741131}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: chickens.Array.data[5]
+      value: 
+      objectReference: {fileID: 355319908}
     - target: {fileID: 7730531218709822333, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3

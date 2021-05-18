@@ -17,6 +17,7 @@ public class Patrol : Action
         }
         else
         {
+            agentInternalState.RemoveState("CatchWolf");
             navAgent.autoBraking = false;
             GotoNextPoint();
             return true;
