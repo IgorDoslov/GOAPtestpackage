@@ -6,9 +6,10 @@ using GOAP;
 public class Wolf : Agent
 {
     public float hungerTime;
-    [HideInInspector]
+    //[HideInInspector]
     public float hungerTimer;
     public GameObject home;
+    public Transform resetPoint;
     public GameObject farmer;
     public float distanceToHome = 10f;
     public float distanceToFarmer = 30f;
@@ -99,14 +100,22 @@ public class Wolf : Agent
         if (!agentInternalState.HasState("Hungry"))
         {
             agentInternalState.AddInternalState("Hungry");
-            Debug.Log("Wolf is hungry");
+           // Debug.Log("Wolf is hungry");
         }
     }
 
-    public void WolfDie()
+    public void WolfReset()
     {
         if (gameObject != null)
-            Destroy(gameObject);
+        {
+            gameObject.transform.position = resetPoint.position;
+            currentAction.navAgent.velocity = Vector3.zero;
+            //currentAction.navAgent.isStopped = true;
+            StopAction();
+            agentInternalState.states.Clear();
+            agentInternalState.AddInternalState("CatchChicken");
+            hungerTimer = 0;
+        }
     }
 
 }

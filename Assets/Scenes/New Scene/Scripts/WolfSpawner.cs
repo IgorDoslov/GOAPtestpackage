@@ -7,11 +7,12 @@ public class WolfSpawner : MonoBehaviour
 {
     public GameObject wolf;
     private ChaseWolf cw;
+    private Farmer f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        f = FindObjectOfType<Farmer>();
         cw = FindObjectOfType<ChaseWolf>();
     }
 
@@ -19,7 +20,12 @@ public class WolfSpawner : MonoBehaviour
     void Update()
     {
         if (cw.wolfCaught)
+        {
             Instantiate(wolf, transform.position, Quaternion.identity);
+            cw.wolfCaught = false;
+            cw.wolf = wolf;
+            f.wolf = wolf;
+        }
 
     }
 }

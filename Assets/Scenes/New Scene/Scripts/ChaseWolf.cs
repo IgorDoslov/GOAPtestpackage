@@ -55,7 +55,7 @@ public class ChaseWolf : Action
         if (wolfCaught)
         {
             agentInternalState.AddInternalState("CatchWolf");
-            wolf.GetComponent<Wolf>().WolfDie();
+            wolf.GetComponent<Wolf>().WolfReset();
             wolfCaught = false;
         }
         return true;

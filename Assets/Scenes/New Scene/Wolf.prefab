@@ -177,11 +177,13 @@ MonoBehaviour:
   actionPlan: []
   hungerTime: 40
   hungerTimer: 0
-  home: {fileID: 5097785893300086458, guid: 3039b856751f89e498e3ccd3ce6c0a30, type: 3}
-  farmer: {fileID: 1915733864233583800, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
+  home: {fileID: 0}
+  resetPoint: {fileID: 0}
+  farmer: {fileID: 0}
   distanceToHome: 15
   distanceToFarmer: 30
   distToF: 0
+  chickens: []
 --- !u!114 &7730531218709822274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,15 +212,9 @@ MonoBehaviour:
   duration: 0
   running: 0
   keepWandering: 1
-  chickens:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   targetChickenIndex: 0
   targetChicken: {fileID: 0}
+  wolf: {fileID: 0}
   chaseRange: 30
 --- !u!114 &7730531218709822275
 MonoBehaviour:

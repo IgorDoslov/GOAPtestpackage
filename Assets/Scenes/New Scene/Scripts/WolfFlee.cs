@@ -33,6 +33,8 @@ public class WolfFlee : Action
             dist = Vector3.Distance(navAgent.transform.position, farmer.transform.position);
         if (farmer == null || dist > distanceToFarmer)
             return true;
+        else if (dist < 2.1f)
+            return true;
         else
             return false;
     }
@@ -41,7 +43,8 @@ public class WolfFlee : Action
     public override bool OnActionExit()
     {
         navAgent.speed = normalSpeed;
-        agentInternalState.ModifyState("Run", -1);
+        agentInternalState.RemoveState("Run");
+        agentInternalState.AddInternalState("Safe");
 
         return true;
     }
