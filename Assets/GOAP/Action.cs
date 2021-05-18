@@ -12,26 +12,28 @@ namespace GOAP
         [Tooltip("The cost of the action")]
         public float cost = 1.0f;
         [HideInInspector]
-        public GameObject target;
+        public GameObject target;   // Can be used to set a destination for the navMeshAgent
         [HideInInspector]
         public Vector3 destination = Vector3.zero;
-        [Tooltip("The preconditions required for the action to occur")]
-        public State[] preConditions;
-        [Tooltip("The effects after the action has occured")]
-        public State[] afterEffects;
-        [HideInInspector]
+        [Tooltip("The preconditions required for the action to occur")] // These two arrays are used so that
+        public State[] preConditions;                                   // preconditions and after effects can
+        [Tooltip("The effects after the action has occured")]           // be added in the inspector as Unity
+        public State[] afterEffects;                                    // doesn't as yet let dictionaries be 
+        [HideInInspector]                                               // exposed in the inspector
         public NavMeshAgent navAgent;
-        public float duration = 0f;
+        public float duration = 0f; // How long the action should last
 
         public Dictionary<string, int> preconditionsDic;
         public Dictionary<string, int> effectsDic;
 
+        // The agent's inventory
         public Inventory inventory;
 
+        // The internal state of the agent
         public StateCollection agentInternalState;
 
         [HideInInspector]
-        public bool running = false;
+        public bool running = false;    //Is the action running
 
         public Action()
         {
@@ -42,7 +44,7 @@ namespace GOAP
         public void Awake()
         {
             navAgent = gameObject.GetComponent<NavMeshAgent>();
-
+            // Add the preconditions and effects from the arrays into the dictionaries
             if (preConditions != null)
                 foreach (State w in preConditions)
                 {
@@ -59,12 +61,13 @@ namespace GOAP
             agentInternalState = GetComponent<Agent>().agentInternalState;
         }
 
-        public bool IsAchievable()
-        {
-            return true;
-        }
+        //public bool IsAchievable()
+        //{
+        //    return true;
+        //}
 
-        public bool IsAchievableGiven(Dictionary<string, int> conditions)
+        // Is the action achievable given the conditions of the world and the preconditions
+        public bool IsActionAchievable(Dictionary<string, int> conditions)
         {
             foreach (KeyValuePair<string, int> p in preconditionsDic)
             {
@@ -76,12 +79,13 @@ namespace GOAP
             return true;
         }
 
+        // On entering the action
         public abstract bool OnActionEnter();
-
+        // On exiting the action
         public abstract bool OnActionExit();
-
+        // While the action is occuring
         public abstract void OnActionUpdate();
-
+        // The conditions to exit the action
         public abstract bool ActionExitCondition();
 
 

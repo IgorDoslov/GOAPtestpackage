@@ -30,17 +30,20 @@ namespace GOAP
             }
         }
 
+        // Add a resource
         public void AddResource(GameObject a_resource)
         {
             queue.Enqueue(a_resource);
         }
 
+        // Remove a gameobject from a resource queue
         public void RemoveResource(GameObject a_resource)
         {
             // create a new queue and copy over values from the old queue, but leave out a_resource so we can remove it
             queue = new Queue<GameObject>(queue.Where(p => p != a_resource));
         }
 
+        // Remove a resource
         public GameObject RemoveResource()
         {
             if (queue.Count == 0) return null;

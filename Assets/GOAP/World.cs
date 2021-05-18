@@ -9,6 +9,7 @@ namespace GOAP
 
     public sealed class World : MonoBehaviour
     {
+        // So we can add resources in the inspector
         [System.Serializable]
         public class InspectorResource
         {
@@ -44,7 +45,7 @@ namespace GOAP
 
             if (Instance == null)
             {
-
+                // create our instance of the world
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
 
@@ -56,9 +57,10 @@ namespace GOAP
             }
         }
 
-        public ResourceQueue GetQueue(string type)
+        // Getter for our queues
+        public ResourceQueue GetQueue(string a_type)
         {
-            return resources[type];
+            return resources[a_type];
         }
 
         public static World Instance { get; private set; }

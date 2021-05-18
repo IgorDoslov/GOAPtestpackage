@@ -7,7 +7,9 @@ namespace GOAP
 {
     public class SubGoal
     {
+        // our goals
         public Dictionary<string, int> subGoals;
+        // should it be removed uopn completion? leave false to repeat goals
         public bool remove;
 
         public SubGoal(string name, int value, bool shouldRemove)
@@ -20,6 +22,7 @@ namespace GOAP
     [System.Serializable]
     public class Goal
     {
+        // Agent's goal
         public string goal;
         public int value;
         [Tooltip("Should the goal be removed once completed. Leave unticked to repeat the goal forever")]

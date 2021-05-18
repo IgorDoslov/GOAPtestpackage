@@ -9,65 +9,71 @@ namespace GOAP
     {
         public Queue<Action> Plan(List<Action> a_actions, Dictionary<string, int> a_goal, StateCollection a_internalstates)
         {
-
             List<Node> leaves = new List<Node>();
-            Node start = new Node(null, 0, World.Instance.GetStateCollection().GetStateDictionary(), a_internalstates.GetStateDictionary(), null);
 
+            // First node
+            Node start = new Node(null, 0f, World.Instance.GetStateCollection().GetStateDictionary(), a_internalstates.GetStateDictionary(), null);
+
+            // Pass in first node to build the graph
             bool success = BuildGraph(start, leaves, a_actions, a_goal);
 
+            // If no plan found
             if (!success)
             {
                 //Debug.Log("No Plan");
                 return null;
             }
 
-            Node cheapest = null;
+            Node cheapestLeaf = null;
+
+            // Find the cheapest plan
             foreach (Node leaf in leaves)
             {
-                if (cheapest == null)
-                    cheapest = leaf;
+                // Make the first leaf the cheapest to be checked against the rest
+                if (cheapestLeaf == null)
+                    cheapestLeaf = leaf;
                 else
                 {
-                    if (leaf.cost < cheapest.cost)
-                        cheapest = leaf;
+                    // If a cheaper path is found make it the cheapest path
+                    if (leaf.cost < cheapestLeaf.cost)
+                        cheapestLeaf = leaf;
                 }
             }
+            // final path
+            List<Action> resultPlan = new List<Action>();
 
-            List<Action> result = new List<Action>();
-            Node n = cheapest;
-            while (n != null)
+            while (cheapestLeaf != null)
             {
-                if (n.action != null)
+                if (cheapestLeaf.action != null)
                 {
-                    result.Insert(0, n.action);
+                    resultPlan.Insert(0, cheapestLeaf.action);
                 }
-                n = n.parent;
+                cheapestLeaf = cheapestLeaf.parent;
             }
 
-            Queue<Action> queue = new Queue<Action>();
-            foreach (Action a in result)
+            // A queue of actions
+            Queue<Action> actionQueue = new Queue<Action>();
+
+            foreach (Action a in resultPlan)
             {
-                queue.Enqueue(a);
+                // Enqueue the actions from our plan
+                actionQueue.Enqueue(a);
             }
 
-            //Debug.Log("The Plan is: ");
-            foreach (Action a in queue)
-            {
-                //Debug.Log("Q: " + a.actionName);
-            }
-
-            return queue;
+            return actionQueue;
         }
 
-        private bool BuildGraph(Node a_parent, List<Node> a_leaves, List<Action> a_useableActions, Dictionary<string, int> a_goal)
+        private bool BuildGraph(Node a_parent, List<Node> a_leaves, List<Action> a_possibleActions, Dictionary<string, int> a_goal)
         {
             bool foundPath = false;
-            foreach (Action action in a_useableActions)
+
+            foreach (Action action in a_possibleActions)
             {
-                if (action.IsAchievableGiven(a_parent.state))
+
+                if (action.IsActionAchievable(a_parent.stateDic))
                 {
-                    Dictionary<string, int> currentState = new Dictionary<string, int>(a_parent.state);
-                    foreach (KeyValuePair<string, int> effect in action.effectsDic)
+                    Dictionary<string, int> currentState = new Dictionary<string, int>(a_parent.stateDic);
+                    foreach (var effect in action.effectsDic)
                     {
                         if (!currentState.ContainsKey(effect.Key))
                             currentState.Add(effect.Key, effect.Value);
@@ -82,7 +88,7 @@ namespace GOAP
                     }
                     else
                     {
-                        List<Action> subset = ActionSubset(a_useableActions, action); // prevents circular path
+                        List<Action> subset = ActionSubset(a_possibleActions, action); // prevents circular path
                         bool found = BuildGraph(node, a_leaves, subset, a_goal);
                         if (found)
                             foundPath = true;
