@@ -1918,6 +1918,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 512335898}
     - target: {fileID: 1915733864233583806, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
+      propertyPath: preConditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915733864233583806, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1709864492}
@@ -1933,6 +1937,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[3]
       value: 
       objectReference: {fileID: 2145386951}
+    - target: {fileID: 1915733864233583806, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
+      propertyPath: preConditions.Array.data[1].key
+      value: IsHome
+      objectReference: {fileID: 0}
     - target: {fileID: 7031435033312158038, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
       propertyPath: homePoint
       value: 

@@ -10,7 +10,8 @@ public class Farmer : Agent
     float dist = 0;
     new void Start()
     {
-        agentInternalState.ModifyState("CantSeeWolf", 1);
+        agentInternalState.AddInternalState("CantSeeWolf");
+        agentInternalState.AddInternalState("IsHome");
         base.Start();
         //example:
         // Invoke("FunctionName", Random.Range(10, 20));
@@ -26,10 +27,12 @@ public class Farmer : Agent
         if (wolf != null)
             dist = Vector3.Distance(transform.position, wolf.transform.position);
 
-        if (wolf != null && dist < distanceToWolf)
-        {
-            agentInternalState.RemoveState("CantSeeWolf");
-            agentInternalState.AddInternalState("CanSeeWolf");
-        }
+        if (!agentInternalState.HasState("CatchWolf"))
+            if (wolf != null && dist < distanceToWolf)
+            {
+                agentInternalState.RemoveState("CantSeeWolf");
+                agentInternalState.RemoveState("IsHome");
+                agentInternalState.AddInternalState("CanSeeWolf");
+            }
     }
 }

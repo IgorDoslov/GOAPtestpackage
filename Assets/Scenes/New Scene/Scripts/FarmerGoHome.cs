@@ -24,7 +24,7 @@ public class FarmerGoHome : Action
     public override bool ActionExitCondition()
     {
         float dist = Vector3.Distance(transform.position, homePoint.position);
-        if (dist < 0.4f)
+        if (dist < 2f)
             return true;
         else
             return false;
