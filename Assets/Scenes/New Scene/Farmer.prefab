@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1915733864233583805}
   - component: {fileID: 1915733864233583806}
   - component: {fileID: 1915733864233583744}
+  - component: {fileID: 7031435033312158038}
   - component: {fileID: 1915733864233583745}
   m_Layer: 0
   m_Name: Farmer
@@ -145,6 +146,10 @@ MonoBehaviour:
   - goal: CatchWolf
     value: 0
     shouldRemove: 0
+    priority: 3
+  - goal: IsHome
+    value: 0
+    shouldRemove: 0
     priority: 2
   currentAction: {fileID: 0}
   durationFinished: 0
@@ -211,6 +216,32 @@ MonoBehaviour:
   normalSpeed: 4
   distanceToWolf: 40
   wolfCaught: 0
+--- !u!114 &7031435033312158038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915733864233583800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e8e2afa5f57db44a263020530df26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 1
+  target: {fileID: 0}
+  destination: {x: 0, y: 0, z: 0}
+  preConditions:
+  - key: CatchWolf
+    value: 0
+  afterEffects:
+  - key: IsHome
+    value: 0
+  navAgent: {fileID: 0}
+  duration: 0
+  running: 0
+  homePoint: {fileID: 0}
 --- !u!114 &1915733864233583745
 MonoBehaviour:
   m_ObjectHideFlags: 0

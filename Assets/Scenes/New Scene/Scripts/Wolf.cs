@@ -15,7 +15,7 @@ public class Wolf : Agent
     public float distanceToFarmer = 30f;
     public float distToF = 0f;
     public List<GameObject> chickens = new List<GameObject>();
-    private ChickensInScene cis = null;
+    //private ChickensInScene cis = null;
 
     //public List<Chicken> chickens = new List<Chicken>();
 
@@ -25,11 +25,11 @@ public class Wolf : Agent
 
     new void Start()
     {
-        cis = FindObjectOfType<ChickensInScene>();
-        foreach (var c in cis.chicks)
-        {
-            chickens.Add(c);
-        }
+        //cis = FindObjectOfType<ChickensInScene>();
+        //foreach (var c in cis.chicks)
+        //{
+        //    chickens.Add(c);
+        //}
         base.Start();
         agentInternalState.AddInternalState("ChickenNotFound");
 

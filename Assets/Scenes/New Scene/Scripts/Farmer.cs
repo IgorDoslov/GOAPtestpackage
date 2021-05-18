@@ -30,10 +30,6 @@ public class Farmer : Agent
         {
             agentInternalState.RemoveState("CantSeeWolf");
             agentInternalState.AddInternalState("CanSeeWolf");
-
         }
-        
     }
-
-
 }

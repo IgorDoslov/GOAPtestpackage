@@ -301,16 +301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodAmount: 1
---- !u!1 &149481088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 617076477}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &157207468 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 3563243684288610603}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &252360363
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,11 +427,6 @@ Transform:
   m_Father: {fileID: 735343015}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &355319908 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 1583360744}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &379123973
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +651,6 @@ GameObject:
   - component: {fileID: 514320344}
   - component: {fileID: 514320343}
   - component: {fileID: 514320342}
-  - component: {fileID: 514320346}
   m_Layer: 0
   m_Name: Home
   m_TagString: Home
@@ -750,25 +734,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &514320346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514320341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d52c8cef81e3c448fcca352d126e81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chicks:
-  - {fileID: 157207468}
-  - {fileID: 1615771346}
-  - {fileID: 2019948546}
-  - {fileID: 149481088}
-  - {fileID: 1231741131}
-  - {fileID: 355319908}
 --- !u!1001 &617076477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1144,11 +1109,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1231741131 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 910219445}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1232312782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,11 +1398,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1615771346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 873433553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1680828382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,11 +1662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodAmount: 1
---- !u!1 &2019948546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3563243684947484887, guid: cefc79d1b2e546340bf0a96560502eb0, type: 3}
-  m_PrefabInstance: {fileID: 6980701}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2047549983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,6 +1933,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[3]
       value: 
       objectReference: {fileID: 2145386951}
+    - target: {fileID: 7031435033312158038, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
+      propertyPath: homePoint
+      value: 
+      objectReference: {fileID: 1709864492}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
 --- !u!1001 &3563243684288610603
@@ -2113,7 +2067,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5097785893300086463, guid: 3039b856751f89e498e3ccd3ce6c0a30, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3039b856751f89e498e3ccd3ce6c0a30, type: 3}
 --- !u!1001 &7730531218685270883
 PrefabInstance:
