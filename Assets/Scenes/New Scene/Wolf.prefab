@@ -159,17 +159,17 @@ MonoBehaviour:
   - goal: ChickenFound
     value: 0
     shouldRemove: 0
-    priority: 0
+    priority: 1
   - goal: CatchChicken
     value: 0
     shouldRemove: 0
-    priority: 0
+    priority: 1
   - goal: GoHome
-    value: 0
+    value: 1
     shouldRemove: 0
     priority: 0
   - goal: Safe
-    value: 0
+    value: 2
     shouldRemove: 0
     priority: 0
   currentAction: {fileID: 0}

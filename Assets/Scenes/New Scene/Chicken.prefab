@@ -354,19 +354,19 @@ MonoBehaviour:
   - goal: SatisfyHunger
     value: 0
     shouldRemove: 0
-    priority: 0
+    priority: 1
   - goal: SatisfyThirst
     value: 0
     shouldRemove: 0
-    priority: 0
+    priority: 1
   - goal: Wander
     value: 0
     shouldRemove: 0
-    priority: 0
+    priority: 1
   - goal: Safe
     value: 0
     shouldRemove: 0
-    priority: 0
+    priority: 2
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []

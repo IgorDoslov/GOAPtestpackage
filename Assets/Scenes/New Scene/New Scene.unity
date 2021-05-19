@@ -2156,6 +2156,14 @@ PrefabInstance:
       propertyPath: chickens.Array.data[5]
       value: 
       objectReference: {fileID: 355319908}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: personalGoals.Array.data[3].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: personalGoals.Array.data[3].priority
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7730531218709822333, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
