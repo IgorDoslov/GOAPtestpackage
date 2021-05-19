@@ -166,7 +166,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   hungerTimer: 0
   thirstTime: 30
   thirstTimer: 0
-  wolf: {fileID: 7730531218709822329, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+  wolf: {fileID: 0}
   home: {fileID: 0}
   distanceToWolf: 30
   distanceToHome: 30
@@ -466,7 +466,7 @@ MonoBehaviour:
   navAgent: {fileID: 0}
   duration: 0
   running: 0
-  wolf: {fileID: 7730531218709822329, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+  wolf: {fileID: 0}
   fleeSpeed: 11
   normalSpeed: 3.5
   distanceToWolf: 20
