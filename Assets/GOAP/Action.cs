@@ -66,6 +66,7 @@ namespace GOAP
             agentInternalState = GetComponent<Agent>().agentInternalState;
         }
 
+        
         //public bool IsAchievable()
         //{
         //    return true;

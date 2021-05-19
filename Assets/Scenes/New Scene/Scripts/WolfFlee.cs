@@ -29,14 +29,15 @@ public class WolfFlee : Action
     // The condition to exit the action
     public override bool ActionExitCondition()
     {
-        if (farmer != null)
+        if (farmer != null) // How far away is the farmer?
             dist = Vector3.Distance(navAgent.transform.position, farmer.transform.position);
-        if (farmer == null || dist > distanceToFarmer)
+
+        if (farmer == null || dist > distanceToFarmer) // Got away from the farmer
         {
             //agentInternalState.AddInternalState("Safe");
             return true;
         }
-        else if (dist < 2.1f)
+        else if (dist < 2.1f) // Got caught by the farmer
             return true;
         else
             return false;
@@ -45,12 +46,14 @@ public class WolfFlee : Action
     // On exiting the state
     public override bool OnActionExit()
     {
+        // Return to normal speed after fleeing
         navAgent.speed = normalSpeed;
         agentInternalState.RemoveState("Run");
 
         return true;
     }
 
+    // Move in the opposite direction to the farmer with some random movement to prevent only straight lines
     public void WFlee()
     {
         if (farmer != null)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
+// Farmer patrol state
 public class Patrol : Action
 {
     public Transform[] patrolPoints;

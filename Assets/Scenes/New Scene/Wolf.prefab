@@ -181,7 +181,7 @@ MonoBehaviour:
   resetPoint: {fileID: 0}
   farmer: {fileID: 0}
   distanceToHome: 2
-  distanceToFarmer: 30
+  distanceToFarmer: 40
   distToF: 0
   chickens:
   - {fileID: 0}

@@ -73,16 +73,20 @@ namespace GOAP
                 // Check Preconditions
                 if (action.IsActionAchievable(a_parent.stateDic))
                 {
+                    // The first time through the current state will be the state of the world.
+                    // After the first time, it will be the next node of the current one
                     Dictionary<string, int> currentState = new Dictionary<string, int>(a_parent.stateDic);
-
+                    // Add the effects
                     foreach (var effect in action.effectsDic)
                     {
                         if (!currentState.ContainsKey(effect.Key))
                             currentState.Add(effect.Key, effect.Value);
                     }
 
+                    // Create the next node. It's parent is the current node. Cost accumulates as we move through the actions each recursion
                     Node node = new Node(a_parent, a_parent.cost + action.cost, currentState, action);
 
+                    // Is the current state after the action the goal? If yes then a plan is found
                     if (GoalAchieved(a_goal, currentState))
                     {
                         a_leaves.Add(node);
@@ -90,8 +94,10 @@ namespace GOAP
                     }
                     else
                     {
-                        List<Action> subset = NewListOfPossibleActions(a_possibleActions, action); // prevents circular path
+                        // Check the other actions for a plan if plan wasn't found
+                        List<Action> subset = NewListOfPossibleActions(a_possibleActions, action); // prevents circular path by removing unusable action. 
 
+                        // Build a new graph without the unusable action just removed above and go through the process again
                         bool found = BuildGraph(node, a_leaves, subset, a_goal);
                         if (found)
                             foundPath = true;
@@ -101,16 +107,18 @@ namespace GOAP
             return foundPath;
         }
 
-
+        // Does the state of the world match the goal? If yes, then goal is achieved
         private bool GoalAchieved(Dictionary<string, int> a_goal, Dictionary<string, int> a_state)
         {
+            // Check if the goal exists in the after effects
             foreach (KeyValuePair<string, int> g in a_goal)
             {
                 if (!a_state.ContainsKey(g.Key))
                     return false;
             }
-            return true;
+            return true; // goal found
         }
+
         // Remove unusable actions
         private List<Action> NewListOfPossibleActions(List<Action> a_actions, Action a_removeThisAction)
         {

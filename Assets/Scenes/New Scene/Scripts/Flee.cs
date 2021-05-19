@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
+// Chicken flee behaviour
 public class Flee : Action
 {
     public GameObject wolf;
@@ -29,8 +30,9 @@ public class Flee : Action
 
     public override bool ActionExitCondition()
     {
-        if (wolf != null)
+        if (wolf != null) // Check distance to wolf if it exists
             dist = Vector3.Distance(navAgent.transform.position, wolf.transform.position);
+        // Exit the action if we are far away enough
         if (wolf == null || dist > distanceToWolf)
             return true;
         else
@@ -40,12 +42,13 @@ public class Flee : Action
     // On exiting the state
     public override bool OnActionExit()
     {
-        agentInternalState.ModifyState("Run", -1);
+        agentInternalState.RemoveState("Run");
         navAgent.speed = normalSpeed;
 
         return true;
     }
 
+    // Make the chicken go in the opposite direction to the wolf but with random fluctuations to prevent always straight lines
     public void ChickenFlee()
     {
         if (wolf != null)

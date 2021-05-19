@@ -43,11 +43,13 @@ public class LookForChicken : Action
     {
         for (int i = 0; i < wolf.chickens.Count; i++)
         {
-
+            // Check the distance to each chicken
             float dist = Vector3.Distance(transform.position, wolf.chickens[i].transform.position);
 
+            // If chicken is in range
             if (dist < chaseRange)
             {
+                // Select a chicken
                 targetChickenIndex = i;
                 if (!inventory.FindItemWithTag("Chicken"))
                 {
@@ -56,7 +58,7 @@ public class LookForChicken : Action
                 }
                 agentInternalState.AddInternalState("ChickenFound");
                 agentInternalState.RemoveState("ChickenNotFound");
-                keepWandering = false;
+                keepWandering = false; // Stop wandering
                 return true;
             }
             else
@@ -74,6 +76,7 @@ public class LookForChicken : Action
 
     }
 
+    // Wander behaviour
     public void Wander()
     {
         //while (keepWandering)

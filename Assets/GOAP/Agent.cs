@@ -126,13 +126,17 @@ namespace GOAP
             {
                 planner = new Planner();
 
+                // Sort the goals
                 var sortedGoals = from entry in goalsDic orderby entry.Value descending select entry;
                
+                // Find an achievable plan
                 foreach (KeyValuePair<SubGoal, int> sg in sortedGoals)
                 {
                     actionQueue = planner.Plan(actions, sg.Key.subGoals, agentInternalState); // trying to create a plan for the most important goal
+                    // If there is a plan
                     if (actionQueue != null)
                     {
+                        // Assign the goal
                         currentGoal = sg.Key;
                         break;
                     }
@@ -152,20 +156,27 @@ namespace GOAP
 
             if (actionQueue != null && actionQueue.Count == 0)
             {
+                // If the current goal should be removed; do we want the goal to repeat or only happen once?
                 if (currentGoal.remove)
                 {
+                    // If yes, then remove it
                     goalsDic.Remove(currentGoal);
                 }
-                planner = null; // get new plan
+                planner = null; // get a new plan
             }
-            // sets our action and gets the target
+
+            // Are there still actions?
             if (actionQueue != null && actionQueue.Count > 0)
             {
+                // Make the first action current action
                 currentAction = actionQueue.Dequeue();
+
                 if (currentAction.OnActionEnter())
                 {
+                    // reset
                     durationTimer = 0f;
                     durationFinished = false;
+                    // current action is running
                     currentAction.running = true;
                 }
                 else
@@ -176,6 +187,7 @@ namespace GOAP
 
         }
 
+        // To interrupt an action
         public void StopAction()
         {
             if (currentAction != null)
@@ -186,6 +198,7 @@ namespace GOAP
             }
         }
 
+        // The duration of the action
         public void Duration()
         {
             durationTimer += Time.deltaTime;

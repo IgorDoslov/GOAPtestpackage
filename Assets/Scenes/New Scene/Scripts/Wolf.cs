@@ -48,7 +48,7 @@ public class Wolf : Agent
         hungerTimer += Time.deltaTime;
 
         if (farmer != null)
-            distToF = Vector3.Distance(transform.position, farmer.transform.position);
+            distToF = Vector3.Distance(transform.position, farmer.transform.position); // Distance to farmer
         float dist = Vector3.Distance(transform.position, home.transform.position);
 
         if (dist > distanceToHome)
@@ -73,6 +73,7 @@ public class Wolf : Agent
             }
             else
             {
+                // Don't flee
                 agentInternalState.RemoveState("Run");
 
 
@@ -82,6 +83,7 @@ public class Wolf : Agent
                 //}
             }
 
+        // Make the wolf hungry
         if (!inventory.FindItemWithTag("Chicken"))
         {
             if (hungerTimer >= hungerTime)
@@ -100,6 +102,7 @@ public class Wolf : Agent
         }
     }
 
+    // Reset the wolf after getting caught by the farmer
     public void WolfReset()
     {
         if (gameObject != null)

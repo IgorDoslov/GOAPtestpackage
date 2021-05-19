@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
+// Makes the wolf go home after catching a chicken
 public class WolfGoHome : Action
 {
     // called at the begining of this action
@@ -26,6 +27,7 @@ public class WolfGoHome : Action
     // The condition to exit the action
     public override bool ActionExitCondition()
     {
+        // Is the wolf close enough to catch the chicken
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if (dist < 2.0f)
             return true;
