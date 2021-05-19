@@ -402,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 252360363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalScale: {x: 14.442, y: 1, z: 14.711825}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -629,7 +629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405646178}
   m_LocalRotation: {x: 0.6996033, y: -0, z: -0, w: 0.71453154}
-  m_LocalPosition: {x: -0.7, y: 152.15, z: 2.3}
+  m_LocalPosition: {x: -0.7, y: 125.8, z: -2.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2156,14 +2156,6 @@ PrefabInstance:
       propertyPath: chickens.Array.data[5]
       value: 
       objectReference: {fileID: 355319908}
-    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
-      propertyPath: personalGoals.Array.data[3].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7730531218709822332, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
-      propertyPath: personalGoals.Array.data[3].priority
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7730531218709822333, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
