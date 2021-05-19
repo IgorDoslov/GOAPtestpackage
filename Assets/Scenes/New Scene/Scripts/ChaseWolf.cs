@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
+// Farmer chases the wolf behaviour
 public class ChaseWolf : Action
 {
     public GameObject wolf;
@@ -25,18 +26,21 @@ public class ChaseWolf : Action
     public override void OnActionUpdate()
     {
         navAgent.SetDestination(wolf.transform.position);
-
     }
 
     // The condition to exit the action
     public override bool ActionExitCondition()
     {
+        // Distance to wolf
         float dist = Vector3.Distance(transform.position, wolf.transform.position);
+
+        // If farmer caught the wolf
         if (dist < 2.0f)
         {
             wolfCaught = true;
             return true;
         }
+        // If wolf got away
         else if (dist > distanceToWolf)
         {
             return true;
@@ -55,6 +59,7 @@ public class ChaseWolf : Action
       
         if (wolfCaught)
         {
+            // Reset the wolf if the wolf was cuaght
             agentInternalState.AddInternalState("CatchWolf");
             wolf.GetComponent<Wolf>().WolfReset();
             wolfCaught = false;

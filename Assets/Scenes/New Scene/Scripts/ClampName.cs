@@ -17,6 +17,7 @@ public class ClampName : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Make text float about gameobject
         Vector3 textPos = Camera.main.WorldToScreenPoint(transform.position);
         nameText.transform.position = textPos;
         if(agent.currentAction != null)

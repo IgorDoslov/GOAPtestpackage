@@ -25,6 +25,7 @@ public class ChickenWander : Action
     // The condition to exit the action
     public override bool ActionExitCondition()
     {
+        // The chicken stops wandering if it can see the wolf, is hungry or is thirsty
         if (agentInternalState.HasState("Run") || (agentInternalState.HasState("Hungry") && agentInternalState.HasState("Thirsty")))
             return true;
         else
@@ -39,11 +40,9 @@ public class ChickenWander : Action
         return true;
     }
 
+    // Wander in random direction
     public void Wander()
     {
-        //while (keepWandering)
-        // {
-        //yield return new WaitForSeconds(3.0f);
         float wanderRadius = 20f;
         float wanderDistance = 1f;
         float wanderJitter = 9f;
@@ -56,6 +55,6 @@ public class ChickenWander : Action
         Vector3 targetWorld = gameObject.transform.InverseTransformVector(targetLocal);
 
         navAgent.SetDestination(targetWorld);
-        //  }
+       
     }
 }

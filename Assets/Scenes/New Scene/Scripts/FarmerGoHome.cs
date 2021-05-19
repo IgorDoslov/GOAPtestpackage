@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
+// Makes the farmer return home after catching the wolf
 public class FarmerGoHome : Action
 {
     public Transform homePoint;
      // called at the begining of this action
     public override bool OnActionEnter()
     {
-
+        // Set destination to be home
         navAgent.SetDestination(homePoint.position);
         return true;
     }
@@ -24,6 +25,7 @@ public class FarmerGoHome : Action
     public override bool ActionExitCondition()
     {
         float dist = Vector3.Distance(transform.position, homePoint.position);
+        // Is farmer close to home?
         if (dist < 2f)
             return true;
         else

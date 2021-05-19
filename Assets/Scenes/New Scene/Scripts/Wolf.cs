@@ -52,7 +52,7 @@ public class Wolf : Agent
         float dist = Vector3.Distance(transform.position, home.transform.position);
 
         if (dist > distanceToHome)
-            if (farmer != null && distToF <= distanceToFarmer)
+            if (farmer != null && distToF <= distanceToFarmer) // If close to farmer, run away
             {
                 if (!agentInternalState.HasState("Run"))
                 {
@@ -60,8 +60,12 @@ public class Wolf : Agent
                     //    agentInternalState.AddInternalState("CloseToHome");
                     //else
                     //    agentInternalState.RemoveState("CloseToHome");
-                    agentInternalState.AddInternalState("Run");
-                    StopAction();
+
+                    StopAction(); // Interrupt current action
+
+                    agentInternalState.AddInternalState("Run"); // Flee state
+
+
                     // put it back into the world
                     if (inventory.FindItemWithTag("Chicken"))
                     {

@@ -33,19 +33,20 @@ public class Chicken : Agent
         thirstTimer += Time.deltaTime;
 
         if (wolf != null)
-            distToWlf = Vector3.Distance(transform.position, wolf.transform.position);
-        float distToHome = Vector3.Distance(transform.position, home.transform.position);
+            distToWlf = Vector3.Distance(transform.position, wolf.transform.position); // Check distance to wolf
+        float distToHome = Vector3.Distance(transform.position, home.transform.position); // Check distance to home
 
-        if (wolf!= null && distToWlf <= distanceToWolf)
+        if (wolf!= null && distToWlf <= distanceToWolf) // If I can see the wolf
         {
             if (!agentInternalState.HasState("Run"))
             {
                 if (distToHome < distanceToHome)
-                    agentInternalState.ModifyState("CloseToHome", 1);
+                    agentInternalState.ModifyState("CloseToHome", 1); // If I'm close to home make me run there
                 else
-                    agentInternalState.ModifyState("CloseToHome", -1);
-                agentInternalState.AddInternalState("Run");
-                StopAction();
+                    agentInternalState.ModifyState("CloseToHome", -1); // If not, run away
+                agentInternalState.AddInternalState("Run"); // Start fleeing
+                StopAction(); // Interrupt current action
+
                 // put it back into the world
                 if (inventory.FindItemWithTag("Food"))
                 {
@@ -63,12 +64,12 @@ public class Chicken : Agent
         {
             agentInternalState.RemoveState("Run");
 
-
+            // Get hungry
             if (hungerTimer >= hungerTime && !agentInternalState.HasState("Hungry"))
             {
                 GetHungry();
             }
-
+            // Get thirsty
             if (thirstTimer >= thirstTime && !agentInternalState.HasState("Thirsty"))
             {
                 GetThirsty();
@@ -102,6 +103,7 @@ public class Chicken : Agent
 
     }
 
+    // Kill the chicken when wolf catches it
     public void ChickenDie()
     {
         if (gameObject != null)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP;
 
+// Wolf chase chicken state
 public class ChaseChicken : Action
 {
     public float chaseSpeed = 10f;
@@ -11,10 +12,12 @@ public class ChaseChicken : Action
     // called at the begining of this action
     public override bool OnActionEnter()
     {
+        // Set chicken as destination
         target = GetComponent<LookForChicken>().targetChicken;
 
         if (target == null)
             return false;
+
         chickenCaught = false;
         navAgent.speed = chaseSpeed;
         return true;
@@ -28,8 +31,10 @@ public class ChaseChicken : Action
 
     public override bool ActionExitCondition()
     {
+        // Distance to chicken
         float dist = Vector3.Distance(transform.position, target.transform.position);
 
+        // If chicken caught
         if (dist < 2.0f)
         {
             chickenCaught = true;
@@ -47,14 +52,18 @@ public class ChaseChicken : Action
         agentInternalState.RemoveState("Hungry");
         agentInternalState.RemoveState("ChickenFound");
         agentInternalState.AddInternalState("ChickenNotFound");
+
         if (chickenCaught == true)
         {
             chickenCaught = false;
             agentInternalState.AddInternalState("CatchChicken");
             target.GetComponent<Chicken>().ChickenDie();
         }
+        // Remove from wolf's inventory
         if (inventory.FindItemWithTag(target.tag))
             inventory.RemoveItem(target);
+
+        // remove the specific chicken
         GetComponent<LookForChicken>().wolf.chickens.RemoveAt(GetComponent<LookForChicken>().targetChickenIndex);
 
         return true;
