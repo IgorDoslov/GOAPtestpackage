@@ -138,19 +138,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   distanceToTargetThreshold: 2
-  myGoals:
+  personalGoals:
   - goal: Patrol
-    value: 1
-    shouldRemove: 0
-    priority: 0
-  - goal: CatchWolf
     value: 0
     shouldRemove: 0
-    priority: 3
+    priority: 1
   - goal: IsHome
     value: 0
     shouldRemove: 0
     priority: 2
+  - goal: CatchWolf
+    value: 0
+    shouldRemove: 0
+    priority: 3
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []
@@ -174,8 +174,6 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   preConditions:
   - key: CantSeeWolf
-    value: 0
-  - key: IsHome
     value: 0
   afterEffects:
   - key: Patrol

@@ -67,12 +67,14 @@ namespace GOAP
         {
             bool foundPath = false;
 
+
             foreach (Action action in a_possibleActions)
             {
-
+                // Check Preconditions
                 if (action.IsActionAchievable(a_parent.stateDic))
                 {
                     Dictionary<string, int> currentState = new Dictionary<string, int>(a_parent.stateDic);
+
                     foreach (var effect in action.effectsDic)
                     {
                         if (!currentState.ContainsKey(effect.Key))
@@ -88,7 +90,8 @@ namespace GOAP
                     }
                     else
                     {
-                        List<Action> subset = ActionSubset(a_possibleActions, action); // prevents circular path
+                        List<Action> subset = NewListOfPossibleActions(a_possibleActions, action); // prevents circular path
+
                         bool found = BuildGraph(node, a_leaves, subset, a_goal);
                         if (found)
                             foundPath = true;
@@ -108,16 +111,20 @@ namespace GOAP
             }
             return true;
         }
-
-        private List<Action> ActionSubset(List<Action> a_actions, Action a_removeMe)
+        // Remove unusable actions
+        private List<Action> NewListOfPossibleActions(List<Action> a_actions, Action a_removeThisAction)
         {
-            List<Action> subset = new List<Action>();
+            // New list of actions without the unusable action
+            List<Action> newListOfPossibleActions = new List<Action>();
+
             foreach (Action a in a_actions)
             {
-                if (!a.Equals(a_removeMe))
-                    subset.Add(a);
+                // Add actions to the list excluding the unusable action
+                if (!a.Equals(a_removeThisAction))
+                    newListOfPossibleActions.Add(a);
             }
-            return subset;
+            // new list of possible actions with unusable action removed
+            return newListOfPossibleActions;
         }
 
 

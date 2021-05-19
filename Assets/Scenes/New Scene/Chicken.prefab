@@ -350,23 +350,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   distanceToTargetThreshold: 2
-  myGoals:
+  personalGoals:
   - goal: SatisfyHunger
     value: 0
     shouldRemove: 0
-    priority: 1
+    priority: 0
   - goal: SatisfyThirst
     value: 0
     shouldRemove: 0
-    priority: 1
+    priority: 0
   - goal: Wander
     value: 0
     shouldRemove: 0
-    priority: 1
+    priority: 0
   - goal: Safe
     value: 0
     shouldRemove: 0
-    priority: 2
+    priority: 0
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []
@@ -374,7 +374,7 @@ MonoBehaviour:
   hungerTimer: 0
   thirstTime: 30
   thirstTimer: 0
-  wolf: {fileID: 0}
+  wolf: {fileID: 7730531218709822329, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
   home: {fileID: 0}
   distanceToWolf: 30
   distanceToHome: 30
@@ -466,7 +466,7 @@ MonoBehaviour:
   navAgent: {fileID: 0}
   duration: 0
   running: 0
-  wolf: {fileID: 0}
+  wolf: {fileID: 7730531218709822329, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
   fleeSpeed: 11
   normalSpeed: 3.5
   distanceToWolf: 20

@@ -44,20 +44,25 @@ namespace GOAP
         public void Awake()
         {
             navAgent = gameObject.GetComponent<NavMeshAgent>();
-            // Add the preconditions and effects from the arrays into the dictionaries
+            // Add the preconditions to our preconditions dictionary
             if (preConditions != null)
+
                 foreach (State w in preConditions)
                 {
                     preconditionsDic.Add(w.key, w.value);
                 }
 
+            // Add the effects to our effects dictionary
             if (afterEffects != null)
+
                 foreach (State w in afterEffects)
                 {
                     effectsDic.Add(w.key, w.value);
                 }
 
+            // Agent's inventory
             inventory = GetComponent<Agent>().inventory;
+            // Agent's internal state
             agentInternalState = GetComponent<Agent>().agentInternalState;
         }
 
@@ -66,7 +71,7 @@ namespace GOAP
         //    return true;
         //}
 
-        // Is the action achievable given the conditions of the world and the preconditions
+        // Do the conditions passed in match all the preconditions? If yes, then the action is achievable.
         public bool IsActionAchievable(Dictionary<string, int> conditions)
         {
             foreach (KeyValuePair<string, int> p in preconditionsDic)

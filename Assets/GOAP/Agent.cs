@@ -19,6 +19,7 @@ namespace GOAP
             remove = shouldRemove;
         }
     }
+    // To enter our goals in the inspector
     [System.Serializable]
     public class Goal
     {
@@ -33,19 +34,31 @@ namespace GOAP
 
     public class Agent : MonoBehaviour
     {
+        // The agent's actions
         [HideInInspector]
         public List<Action> actions = new List<Action>();
+        // The agent's subgoals
         public Dictionary<SubGoal, int> goalsDic = new Dictionary<SubGoal, int>();
+        // The agent's inventory
         public Inventory inventory = new Inventory();
+        // The agent's internal state
         public StateCollection agentInternalState = new StateCollection();
+
         [Tooltip("How far from the target does the agent need to be to complete the goal")]
         public float distanceToTargetThreshold = 2f;
-        public Goal[] myGoals;
+
+        // For adding goals in the inspector
+        public Goal[] personalGoals;
+
         Planner planner;
+        
         Queue<Action> actionQueue;
+
         public Action currentAction;
+
         SubGoal currentGoal;
 
+        // For completing the action
         protected float durationTimer = 0f;
         public bool durationFinished = false;
 
@@ -58,14 +71,16 @@ namespace GOAP
             Action[] acts = GetComponents<Action>();
             foreach (Action a in acts)
                 actions.Add(a);
-            for (int i = 0; i < myGoals.Length; i++)
+
+            for (int i = 0; i < personalGoals.Length; i++)
             {
-                Goal g = myGoals[i];
+                Goal g = personalGoals[i];
                 SubGoal sg = new SubGoal(g.goal, g.value, g.shouldRemove);
                 goalsDic.Add(sg, g.priority);
             }
         }
 
+        // Allows the agent to complete an action
         void CompleteAction()
         {
             if (currentAction != null)
@@ -80,13 +95,15 @@ namespace GOAP
         // Update is called once per frame
         void LateUpdate()
         {
+            // If the current is not null and it is running
             if (currentAction != null && currentAction.running)
             {
-
+                // Check the exit condition of the current action
                 if (currentAction.ActionExitCondition())
                 {
+                    // Finish the action after the duration
                     Duration();
-
+                    // If the exit condition is true then complete the action
                     if (durationFinished)
                         CompleteAction();
 
@@ -94,6 +111,7 @@ namespace GOAP
 
                 }
 
+                // If the action is still running, then run its update loop
                 if (currentAction.running)
                 {
                     currentAction.OnActionUpdate();
@@ -109,7 +127,7 @@ namespace GOAP
                 planner = new Planner();
 
                 var sortedGoals = from entry in goalsDic orderby entry.Value descending select entry;
-
+               
                 foreach (KeyValuePair<SubGoal, int> sg in sortedGoals)
                 {
                     actionQueue = planner.Plan(actions, sg.Key.subGoals, agentInternalState); // trying to create a plan for the most important goal

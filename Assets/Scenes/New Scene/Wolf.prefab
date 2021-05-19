@@ -155,23 +155,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   distanceToTargetThreshold: 2
-  myGoals:
+  personalGoals:
   - goal: ChickenFound
     value: 0
     shouldRemove: 0
-    priority: 1
+    priority: 0
   - goal: CatchChicken
     value: 0
     shouldRemove: 0
-    priority: 1
+    priority: 0
   - goal: GoHome
     value: 0
     shouldRemove: 0
-    priority: 1
+    priority: 0
   - goal: Safe
     value: 0
     shouldRemove: 0
-    priority: 2
+    priority: 0
   currentAction: {fileID: 0}
   durationFinished: 0
   actionPlan: []

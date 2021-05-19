@@ -9,23 +9,27 @@ namespace GOAP
     {
         public Queue<GameObject> queue = new Queue<GameObject>();
         public string tag;
-        public string modState;
+        public string state;
 
+        // Constructor
         public ResourceQueue(string a_tag, string a_modState, StateCollection a_worldStates)
         {
             tag = a_tag;
-            modState = a_modState;
+            state = a_modState;
+            
             if (tag != "")
             {
+                // Find the gameobjects
                 GameObject[] resources = GameObject.FindGameObjectsWithTag(tag);
+                // Enqueue them
                 foreach (GameObject r in resources)
                 {
                     queue.Enqueue(r);
                 }
-
-                if (modState != "")
+                // If state isn't empty add it to the world states
+                if (state != "")
                 {
-                    a_worldStates.ModifyState(modState, queue.Count);
+                    a_worldStates.ModifyState(state, queue.Count);
                 }
             }
         }

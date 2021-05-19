@@ -31,10 +31,10 @@ namespace GOAP
         {
             worldStates = new StateCollection();
 
-            // add the resources entered in the inspector to the resources dictionary
+            // add the resources entered in the inspector to the resources queue and dictionary
             foreach (var r in resourceConfig)
             {
-                var res = new ResourceQueue(r.tag,r.objectQueue, worldStates);
+                var res = new ResourceQueue(r.tag, r.objectQueue, worldStates);
                 resources.Add(r.tag, res);
             }
 
@@ -65,6 +65,7 @@ namespace GOAP
 
         public static World Instance { get; private set; }
 
+        // Getter for our states
         public StateCollection GetStateCollection()
         {
             return worldStates;
