@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using System.Collections.Generic;
+
 
 namespace GOAP
 {
     public class Planner
     {
+        
         public Queue<Action> Plan(List<Action> a_actions, Dictionary<string, int> a_goal, StateCollection a_internalstates)
         {
             List<Node> leaves = new List<Node>();

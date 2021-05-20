@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Diagnostics;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -132,7 +132,10 @@ namespace GOAP
                 // Find an achievable plan
                 foreach (KeyValuePair<SubGoal, int> sg in sortedGoals)
                 {
+                    Stopwatch sw = Stopwatch.StartNew();
                     actionQueue = planner.Plan(actions, sg.Key.subGoals, agentInternalState); // trying to create a plan for the most important goal
+                    sw.Stop();
+                    UnityEngine.Debug.Log(sw.ElapsedMilliseconds);
                     // If there is a plan
                     if (actionQueue != null)
                     {

@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using GOAP;
-using System.Linq;
 
 public class LookForChicken : Action
 {

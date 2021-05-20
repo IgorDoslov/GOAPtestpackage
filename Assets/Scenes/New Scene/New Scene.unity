@@ -1896,6 +1896,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1052830313, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1915733864233583744, guid: 1560666cd12e63a499b6a50f6ea7f6e4, type: 3}
       propertyPath: wolf
       value: 
@@ -2112,6 +2116,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1501884710, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7730531218709822277, guid: 623d5abd7a7df274e89c049b4fbb83ac, type: 3}
       propertyPath: farmer
       value: 
