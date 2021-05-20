@@ -1,8 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System;
+
 
 namespace GOAP
 {
@@ -133,12 +132,9 @@ namespace GOAP
                 // Find an achievable plan
                 foreach (KeyValuePair<SubGoal, int> sg in sortedGoals)
                 {
-                    System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-                    stopwatch.Start();
+                   
                     actionQueue = planner.Plan(actions, sg.Key.subGoals, agentInternalState); // trying to create a plan for the most important goal
-                    stopwatch.Stop();
-                    Debug.Log("Time taken: " + (stopwatch.Elapsed));
-                    stopwatch.Reset();
+                    
                     // If there is a plan
                     if (actionQueue != null)
                     {
@@ -148,16 +144,6 @@ namespace GOAP
                     }
                 }
             }
-
-            // for debugging or use system.linq instead. Remove this maybe
-            //actionPlan.Clear();
-            //if (actionQueue != null)
-            //{
-            //    foreach (Action a in actionQueue)
-            //    {
-            //        actionPlan.Add(a);
-            //    }
-            //}
 
 
             if (actionQueue != null && actionQueue.Count == 0)

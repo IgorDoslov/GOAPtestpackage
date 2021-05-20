@@ -53,18 +53,6 @@ namespace GOAP
         }
 
 
-        //public void ModifyInternalState(string key)
-        //{
-        //    if (states.ContainsKey(key))
-        //    {
-        //        states[key] += 0;
-        //        if (states[key] <= 0)
-        //            RemoveState(key);
-        //    }
-        //    else
-        //        states.Add(key, 0);
-        //}
-
         // Remove a state if it exists
         public void RemoveState(string key)
         {

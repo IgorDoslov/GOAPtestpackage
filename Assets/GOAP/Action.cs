@@ -66,11 +66,6 @@ namespace GOAP
             agentInternalState = GetComponent<Agent>().agentInternalState;
         }
 
-        
-        //public bool IsAchievable()
-        //{
-        //    return true;
-        //}
 
         // Do the conditions passed in match all the preconditions? If yes, then the action is achievable.
         public bool IsActionAchievable(Dictionary<string, int> conditions)
